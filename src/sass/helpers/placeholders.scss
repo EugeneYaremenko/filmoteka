@@ -1,0 +1,32 @@
+%button {
+  border: 2px solid $first-orange-color;
+  margin: 0px;
+  padding: 0px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+// передается в item (li)
+%list {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+// передается в link (а)
+%link {
+  margin: 0px;
+  text-decoration: none;
+}
+
+// передается в link (а) (если нужно)
+%item {
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+%icon {
+  display: block;
+  width: 100%;
+}

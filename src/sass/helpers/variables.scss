@@ -1,0 +1,90 @@
+// screen size
+$screen-format: screen;
+$screen-mobile: 320px;
+$screen-tablet: 768px;
+$screen-desktop: 1280px;
+$screen-desktop-wide: 1680px;
+
+
+// breakpoints
+// small tablets and large smartphones (landscape view)
+$screen-mob: 360px;
+// small tablets
+$screen-tabl: 808px;
+// tablets and small desktops
+$screen-desk: 1320px;
+// large tablets and desktops
+$screen-desk-wide: 1720px;
+
+
+// font-family: 'Montserrat', sans-serif;
+$main-font-stack: 'Montserrat','Tahoma', sans-serif;
+$font-family-monts: 'Montserrat', sans-serif;
+$main-font-tahoma: 'Tahoma', sans-serif;
+
+// font-weight
+$font-weight-extrabold: 800;
+$font-weight-bold: 700;
+$font-weight-semibold: 600;
+$font-weight-medium: 500;
+$font-weight-regular: 400;
+
+
+// font-size
+$first-text-size: 11px;
+$second-text-size: 12px;
+$third-text-size: 13px;
+$fourth-text-size: 14px;
+$fifth-text-size: 15px;
+$sixth-text-size: 16px;
+$seventh-text-size: 17px;
+$eigth-text-size: 18px;
+$ninth-text-size: 19px;
+$tenth-text-size: 20px;
+
+$twenty-one-text-size: 21px;
+$twenty-two-text-size: 22px;
+$twenty-five-text-size: 25px;
+$twenty-six-text-size: 26px;
+$twenty-seven-text-size: 27px;
+$twenty-nine-text-size: 29px;
+
+$forty-two-text-size: 42px;
+$forty-six-text-size: 46px;
+$forty-eight-text-size: 48px;
+
+// Переназвати та вставити в код
+$custom-first-text-size: 12.5px;
+$custom-second-text-size: 16.667px;
+$custom-third-text-size: 18.75px;
+$custom-fourth-text-size: 37.5px;
+$custom-fifth-text-size: 58.333px;
+
+
+// line-height
+$main-text-height: 1.2;
+$primary-text-height: 1.35;
+$primary-font-height: 1.5;
+$secondary-text-height: 1.8;
+
+
+// color
+$first-white-color: #ffffff;
+$second-white-color: #fdfefe;
+$third-white-color: #e0e0e0;
+$fourth-white-color: #f1f1f1;
+$first-lightgrey-color: #d1d1d1;
+$second-lightgrey-color: #b9b9b9;
+$third-lightgrey-color: #bbbbbb;
+$first-grey-color: #858585;
+$first-grey-opacity-color: #85858580;
+$second-grey-color: #546264;
+$first-red-color: #ff0000;
+$first-orange-color: #ff6b08;
+$first-green-color: #09ab09;
+$first-lightdark-color: #111517;
+$first-lightdark-opacity-color: #1d1d1b1c;
+$second-lightdark-opacity-color: #1d1d1b0a;
+$third-lightdark-opacity-color: #1d1d1b17;
+$first-dark-color: #18191d;
+$first-black-color: #000000;

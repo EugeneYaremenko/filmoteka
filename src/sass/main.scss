@@ -1,0 +1,16 @@
+@import 'normalize.scss';
+@import './helpers/extras';
+// @import './helpers/mixins';
+// @import './helpers/placeholders';
+// @import './helpers/typography';
+// @import './helpers/variables';
+@import 'reset.scss';
+@import 'base.scss';
+
+// components
+@import './components/header';
+@import './components/footer';
+@import './components/details-page';
+@import './components/home-page';
+@import './components/library-page';
+// @import './components/spinner';
