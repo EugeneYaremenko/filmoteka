@@ -1,4 +1,3 @@
-// import './js/pixabay-search';
 // import './js/services/pixabayAsync-services';
 // import './js/spinner';
 // import './js/buttonScrollTop';
@@ -6,4 +5,3 @@
 // import './js/gallery-item';
 
 import './sass/main.scss';
-
