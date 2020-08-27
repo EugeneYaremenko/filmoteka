@@ -1,9 +1,5 @@
-// .header {
-//   background: green;
-// }
 .header {
-  // text-align: center;
-  display: flex;
+  width: 100%;
   background: #77c1bb;
   margin-bottom: 20px;
 
@@ -12,7 +8,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    // max-width: 320px;
     min-height: 66px;
   }
 
@@ -21,13 +16,32 @@
   }
 
   &__link {
+    display: flex;
+    align-items: center;
+    @extend %list;
+    @extend %link;
   }
 
   &__logo {
+    width: 22px;
+    height: 20px;
+
+    @include tablet {
+      margin-right: 10px;
+    }
   }
 
   &__logo-title {
     display: none;
+
+    @include tablet {
+      display: block;
+      font-size: 20px;
+      font-family: 'Myriad Pro';
+      color: rgba(55, 44, 72, 0.871);
+      line-height: 16px;
+      
+    }
   }
 }
 
@@ -40,8 +54,6 @@
     display: flex;
     flex-direction: row;
     list-style: none;
-    // align-items: center;
-    // padding-left: 40px;
   }
 
   &__item {
