@@ -1,0 +1,23 @@
+{{#each this}} <li class="gallery__item js-gallery__item">
+    <div class="photo-card js-photo-card">
+        <a class="photo-card__link js-photo-card__link"
+            href="{{largeImageURL}}">
+            <img class="photo-card__image js-photo-card__image"
+                src="{{webformatURL}}" data-source="{{largeImageURL}}"
+                alt="{{user}}" />
+        </a>
+        <div class="stats">
+            <p class="stats-item">
+                <i class="material-icons">thumb_up </i> {{likes}} </p>
+            <p class="stats-item">
+                <i class="material-icons">visibility</i> {{views}} </p>
+            <p class="stats-item">
+                <i class="material-icons">comment</i> {{comments}} </p>
+            <p class="stats-item">
+                <i class="material-icons">cloud_download</i> {{downloads}} </p>
+        </div>
+    </div>
+</li>
+</li> {{/each}}
+
+{{!-- <p class="main__film-vote-average">{{vote_average}}</p> --}}

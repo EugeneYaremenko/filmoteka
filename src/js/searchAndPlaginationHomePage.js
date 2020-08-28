@@ -1,3 +1,5 @@
+import cardTemplate from '../templates/cardFilm.hbs';
+
 let inputValue;
 let pageNumber = 1;
 let renderFilms;
@@ -13,6 +15,8 @@ function searchFilms(e) {
   e.preventDefault();
 
   inputValue = e.currentTarget.elements.query.value;
+
+  console.log(inputValue);
 
   fetchFilms(inputValue);
 }
@@ -34,16 +38,30 @@ function fetchFilms(inputValue) {
     .then(data => {
       renderFilms = data;
 
-console.log(data);
-console.log(data.result);
-
-
+      console.log(data);
+      console.log(data.results);
 
       //   console.log(renderFilms.results.length);
+      clearFilmList();
+      // renderFilms(data.results);
+      insertListItems(data.results);
     });
-  clearFilmList();
   //   createCardFunc(data.results);
 
   //   if ((renderFilms.results.length = 0)) {
   //   }
+}
+
+// function renderFilms(pictures) {
+// renderFilms(pictures) {
+  // const gallery = pictures.map(picture => cardTemplate(picture)).join('');
+  // console.log(gallery);
+
+  // refs.filmList.insertAdjacentHTML('beforeend', gallery);
+// }
+// 
+
+async function insertListItems(images) {
+  const markupGallery = await cardTemplate(images);
+  refs.filmList.insertAdjacentHTML('beforeend', markupGallery);
 }
