@@ -22,46 +22,47 @@ const refs = {
   logo: document.querySelector('#js-logo'),
 };
 
-let selectFilm = {};
-
 refs.sectionLibraryPage.classList.add('visually-hidden');
 refs.sectionDetailsPage.classList.add('visually-hidden');
 
-refs.navHomeLink.addEventListener('click', onHomePage);
-refs.navMyLibraryLink.addEventListener('click', onLibraryPage);
-refs.logo.addEventListener('click', onHomePage);
+refs.navHomeLink.addEventListener('click', activeHomePage);
+refs.navMyLibraryLink.addEventListener('click', activeLibraryPage);
+refs.logo.addEventListener('click', activeHomePage);
 
-function onHomePage() {
+function activeHomePage() {
   refs.sectionHomePage.classList.remove('visually-hidden');
   refs.sectionLibraryPage.classList.add('visually-hidden');
   refs.sectionDetailsPage.classList.add('visually-hidden');
 
-  refs.prevButton.addEventListener('click', plaginationNavigation);
-  refs.nextButton.addEventListener('click', plaginationNavigation);
+/*   refs.prevButton.addEventListener('click', plaginationNavigation);  // Участник 2
+  refs.nextButton.addEventListener('click', plaginationNavigation); */
 
-  refs.addQueueButton.removeEventListener('click', toggleToQueue);
-  refs.addWatchedButton.removeEventListener('click', toggleToWatched);
-  refs.buttonLibraryQueue.removeEventListener('click', drawQueueFilmList);
-  refs.buttonLibraryWatched.removeEventListener('click', drawWatchedFilmList);
+/*   refs.addQueueButton.removeEventListener('click', toggleToQueue);        // Участник 4
+  refs.addWatchedButton.removeEventListener('click', toggleToWatched); */
+
+/*   refs.buttonLibraryQueue.removeEventListener('click', drawQueueFilmList);     // Участник 5
+  refs.buttonLibraryWatched.removeEventListener('click', drawWatchedFilmList); */
 }
 
-function onLibraryPage() {
-  refs.onLibraryPagesectionHomePage.classList.add('visually-hidden');
+function activeLibraryPage() {
+  refs.sectionHomePage.classList.add('visually-hidden');
   refs.sectionDetailsPage.classList.add('visually-hidden');
   refs.sectionLibraryPage.classList.remove('visually-hidden');
 
-  drawQueueFilmList();
-  refs.buttonLibraryQueue.classList.add('main__navigationLibraryButtonActive');
+/*   drawQueueFilmList();
+  refs.buttonLibraryQueue.classList.add('main__navigation-library-btn-active'); */   // Участник 5
 
-  refs.buttonLibraryQueue.addEventListener('click', drawQueueFilmList);
-  refs.buttonLibraryWatched.addEventListener('click', drawWatchedFilmList);
+/*   refs.buttonLibraryQueue.addEventListener('click', drawQueueFilmList);      // Участник 5
+  refs.buttonLibraryWatched.addEventListener('click', drawWatchedFilmList); */
 
-  refs.addQueueButton.removeEventListener('click', toggleToQueue);
-  refs.addWatchedButton.removeEventListener('click', toggleToWatched);
+/*   refs.addQueueButton.removeEventListener('click', toggleToQueue);       // Участник 4
+  refs.addWatchedButton.removeEventListener('click', toggleToWatched); */
 
-  refs.prevButton.removeEventListener('click', plaginationNavigation);
-  refs.nextButton.removeEventListener('click', plaginationNavigation);
+/*   refs.prevButton.removeEventListener('click', plaginationNavigation);  // Участник 2
+  refs.nextButton.removeEventListener('click', plaginationNavigation); */
 }
+
+let selectFilm = {};
 
 function activeDetailsPage(movieId, itsLibraryFilm) {
   refs.sectionHomePage.classList.add('visually-hidden');
@@ -69,24 +70,26 @@ function activeDetailsPage(movieId, itsLibraryFilm) {
   refs.sectionDetailsPage.classList.remove('visually-hidden');
 
   if (itsLibraryFilm) {
-    let queueAndWatchedFilmListFromLS = [
+    let queueFilmList = [
       ...JSON.parse(localStorage.getItem('filmsQueue')),
       ...JSON.parse(localStorage.getItem('filmsWatched')),
     ];
 
-    selectFilm = queueAndWatchedFilmListFromLS.find(el => el.id === movieId);
+    selectFilm = queueFilmList.find(el => el.id === movieId);
   }
 
-  selectFilm = renderFilms.find(el => el.id === movieId);
+  selectFilm = renderFilms.find(el => el.id === movieId);   // Участник 1
+
+  /* showDetails(selectFilm); */  // Участник 4
 }
 
-showDetails(selectFilm);
 
-refs.addQueueButton.addEventListener('click', toggleToQueue);
-refs.addWatchedButton.addEventListener('click', toggleToWatched);
 
-refs.buttonLibraryQueue.removeEventListener('click', drawQueueFilmList);
-refs.buttonLibraryWatched.removeEventListener('click', drawWatchedFilmList);
+/* refs.addQueueButton.addEventListener('click', toggleToQueue);          // Участник 4
+refs.addWatchedButton.addEventListener('click', toggleToWatched); */
 
-refs.prevButton.removeEventListener('click', plaginationNavigation);
-refs.nextButton.removeEventListener('click', plaginationNavigation);
+/* refs.buttonLibraryQueue.removeEventListener('click', drawQueueFilmList);   // Участник 5
+refs.buttonLibraryWatched.removeEventListener('click', drawWatchedFilmList); */
+
+/* refs.prevButton.removeEventListener('click', plaginationNavigation);   // Участник 2
+refs.nextButton.removeEventListener('click', plaginationNavigation); */
