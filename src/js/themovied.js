@@ -14,20 +14,26 @@ const orientation = '&orientation=horizontal';
 const choose = '&q=woman';
 
 // fetch(picturesRef + key + type + orientation + choose)
-fetch(moviesRef + key)
+// fetch(moviesRef + key)
+fetch('https://api.themoviedb.org/3/movie?api_key=0e322ad2a3bf93179a3983749fdc0c73&language=en-US&query=war&page=1&include_adult=false')
   .then(response => response.json())
   .then(data => {
     console.log(data);
-    console.dir(data);
+    console.log(data.results);
     
-    console.log(data.hits);
 
-    renderGallery(data.hits);
+    // renderGallery(data.results);
+    insertListItems(data.results);
   });
 
 function renderGallery(pictures) {
   const gallery = pictures.map(picture => cardTemplate(picture)).join('');
   // console.log(gallery);
 
-  galleryRef.insertAdjacentHTML('beforeend', gallery);
+  sectionFilm.insertAdjacentHTML('beforeend', gallery);
+}
+
+async function insertListItems(images) {
+  const markupGallery = await cardTemplate(images);
+  sectionFilm.insertAdjacentHTML('beforeend', markupGallery);
 }

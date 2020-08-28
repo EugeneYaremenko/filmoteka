@@ -1,33 +1,9 @@
-{{#each this}}<li class="main__film-item">
-    <img src="#" alt="name-film" />
-    <p class="main__film-title">Name of film</p>
-</li>{{/each}} 
-
-
-
-
-
-{{#each this}} <li class="gallery__item js-gallery__item">
-    <div class="photo-card js-photo-card">
-        <a class="photo-card__link js-photo-card__link"
-            href="{{largeImageURL}}">
-            <img class="photo-card__image js-photo-card__image"
-                src="{{webformatURL}}" data-source="{{largeImageURL}}"
-                alt="{{user}}" />
+{{#each this}}<li class="main__film-item js-film-item">
+    <div class="main__film-item-wrapper js-film-item-wrapper">
+        <a class="main__film-link js-film-link">
+            <img src="https://image.tmdb.org/t/p/w500{{backdrop_path}}"
+                alt="{{original_title}}" class="main__film-image js-film-image" />
         </a>
-        <div class="stats">
-            <p class="stats-item">
-                <i class="material-icons">thumb_up </i> {{likes}} </p>
-            <p class="stats-item">
-                <i class="material-icons">visibility</i> {{views}} </p>
-            <p class="stats-item">
-                <i class="material-icons">comment</i> {{comments}} </p>
-            <p class="stats-item">
-                <i class="material-icons">cloud_download</i> {{downloads}} </p>
-        </div>
     </div>
-</li>
-</li> {{/each}} {{!-- <li class="main__film-item">
-    <img src="#" alt="name-film" />
-    <p class="main__film-title">Name of film</p>
-</li> --}}
+    <p class="main__film-title">{{title}}</p>
+</li>{{/each}}
