@@ -19,3 +19,8 @@
     @content;
   }
 }
+
+@mixin pseudo($display: inline-block, $content: '') {
+  display: $display;
+  content: $content;
+}

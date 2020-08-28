@@ -33,6 +33,12 @@ function fetchFilms(inputValue) {
     .then(response => response.json())
     .then(data => {
       renderFilms = data;
+
+console.log(data);
+console.log(data.result);
+
+
+
       //   console.log(renderFilms.results.length);
     });
   clearFilmList();
