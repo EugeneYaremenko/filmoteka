@@ -37,7 +37,8 @@
     @include tablet {
       display: block;
       font-size: 20px;
-      font-family: 'Myriad Pro';
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
       color: rgba(55, 44, 72, 0.871);
       line-height: 16px;
       
