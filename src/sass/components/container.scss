@@ -1,0 +1,12 @@
+.container {
+  width: $screen-mobile;
+  margin: 0px auto;
+
+  @include tablet {
+    width: $screen-tablet;
+  }
+
+  @include desktop {
+    width: $screen-desktop;
+  }
+}

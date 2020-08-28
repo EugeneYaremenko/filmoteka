@@ -1,0 +1,160 @@
+.main {
+  &__section-film {
+    padding-top: 14px;
+
+    @include tablet {
+      padding-top: 30px;
+    }
+  }
+
+  &__film-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @extend %list;
+    margin-bottom: 28px;
+
+    @include tablet {
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    @include desktop {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__film-item {
+    width: 298px;
+    height: 156px;
+    border-radius: 10px;
+    position: relative;
+    background-image: url('../images/bgr-card.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    @include tablet {
+      width: 346px;
+      height: 180px;
+
+      &:not(:last-child) {
+        margin-bottom: 0px;
+      }
+
+      &:nth-last-child(2n) {
+        margin-right: 24px;
+      }
+
+      &:not(:nth-last-child(-n + 2)) {
+        margin-bottom: 16px;
+      }
+    }
+
+    @include desktop {
+      width: 466px;
+      height: 244px;
+
+      &:nth-last-child(2n) {
+        margin-right: 32px;
+      }
+
+      &:not(:nth-last-child(-n + 2)) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  &__film-title {
+    position: absolute;
+    left: 10px;
+    bottom: 8px;
+    font-size: 12.3px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+
+    @include tablet {
+      bottom: 14px;
+      font-size: 14.5px;
+    }
+
+    @include desktop {
+      font-size: 20px;
+    }
+  }
+
+  &__pagination-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 22px;
+    padding: 0px 24px;
+
+    @include tablet {
+      margin-bottom: 18px;
+    }
+
+    @include desktop {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__prev-button,
+  &__page-number,
+  &__next-button {
+    font-size: 22, 2px;
+    font-family: 'DroidSans', sans-serif;
+    font-weight: 700;
+    color: #556270;
+    font-weight: bold;
+    line-height: 1.143;
+    text-align: left;
+    text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.004);
+    padding: 10px 20px;
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e2e2e2;
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 1px 0px rgba(255, 255, 255, 0.004);
+
+    @include tablet {
+      font-size: 17, 5px;
+      line-height: 20px;
+    }
+  }
+
+  &__prev-button {
+    margin-right: 16px;
+
+    @include tablet {
+      margin-right: 12px;
+    }
+  }
+
+  &__page-number {
+    margin-right: 16px;
+
+    @include tablet {
+      margin-right: 12px;
+    }
+  }
+
+  &__next-button {
+  }
+
+  &__library-page {
+    display: none;
+  }
+
+  &__details-page {
+    display: none;
+  }
+}

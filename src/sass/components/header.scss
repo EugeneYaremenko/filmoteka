@@ -1,3 +1,105 @@
 .header {
-  background: green;
+  width: 100%;
+  background: #77c1bb;
+  // margin-bottom: 20px;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 66px;
+  }
+
+  &__logo-wrapper {
+    padding-left: 20px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    @extend %list;
+    @extend %link;
+  }
+
+  &__logo {
+    width: 22px;
+    height: 20px;
+
+    @include tablet {
+      margin-right: 10px;
+    }
+  }
+
+  &__logo-title {
+    display: none;
+
+    @include tablet {
+      display: block;
+      font-size: 20px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      color: rgba(55, 44, 72, 0.871);
+      line-height: 16px;
+    }
+  }
 }
+
+.nav {
+  display: flex;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-right: 12px;
+
+    @include tablet {
+      margin-right: 28px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    align-items: center;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 122px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #4d6671;
+    font-size: 14px;
+    transition: all 0.2s linear;
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 0;
+      height: 3px;
+      background: #372c48;
+      bottom: -16px;
+      left: 50%;
+      transition: all 0.2s linear;
+    }
+
+    &:hover::after,
+    &:focus::after {
+      width: 100%;
+      left: 0;
+    }
+
+    &:hover,
+    &:focus {
+      color: #372c48;
+    }
+  }
+}
+
