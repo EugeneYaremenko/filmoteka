@@ -4,20 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>js-project</title>
+    <title>Filmoteka</title>
+
     <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
       rel="stylesheet"
     />
   </head>
 
   <body>
-
     <header class="header">
-      <div class="header__content">
+      <div class="header__content container">
         <div id="js-logo" class="header__logo-wrapper">
-          <a href="" class="header__link">
-            <img src="#" alt="logo" class="header__logo" />
+          <a href="#" class="header__link">
+            <img src="./images/logo.png" alt="logo" class="header__logo" />
             <p class="header__logo-title">Filmoteka</p>
           </a>
         </div>
@@ -35,7 +35,7 @@
     </header>
 
     <main class="main">
-      <div class="main__container">
+      <div class="main__container container">
         <h1 class="visually-hidden">Filmoteka</h1>
 
         <section id="js-home-page" class="main__home-page">
@@ -49,17 +49,37 @@
               autocomplete="off"
             />
           </form>
-          <p id="js-error" class="main__error"></p>
+          <p id="js-error" class="main__error">
+            Search result not successful. Enter the correct movie name and try
+            again.
+          </p>
 
           <section class="main__section-film">
-            <ul id="js-film-list" class="main__film-list"></ul>
+            <ul id="js-film-list" class="main__film-list">
+              <li class="main__film-item">
+                <img src="#" alt="name-film" />
+                <p class="main__film-title">Name of film</p>
+              </li>
+              <li class="main__film-item">
+                <img src="#" alt="name-film" />
+                <p class="main__film-title">Name of film</p>
+              </li>
+              <li class="main__film-item">
+                <img src="#" alt="name-film" />
+                <p class="main__film-title">Name of film</p>
+              </li>
+              <li class="main__film-item">
+                <img src="#" alt="name-film" />
+                <p class="main__film-title">Name of film</p>
+              </li>
+            </ul>
             <div id="js-pagination-wrapper" class="main__pagination-wrapper">
               <button id="js-prev-button" class="main__prev-button">
-                back
+                Prev
               </button>
               <div id="js-page-number" class="main__page-number">1</div>
               <button id="js-next-button" class="main__next-button">
-                next
+                Next
               </button>
             </div>
           </section>
@@ -77,7 +97,7 @@
               id="js-navigation-library-btn-watched"
               class="main__navigation-library-btn"
             >
-            Watched
+              Watched
             </button>
           </div>
           <ul id="js-library-film-list" class="main__library-film-list"></ul>
@@ -89,19 +109,26 @@
             <div class="main__description-wrapper">
               <div class="main__description-wrapper"></div>
               <div class="main__add-list-wrapper">
-                <button id="js-add-queue-button" class="main__add-button">Delete from queue</button>
-                <button id="js-add-watched-button" class="main__add-button">Delete from watched</button>
+                <button id="js-add-queue-button" class="main__add-button">
+                  Delete from queue
+                </button>
+                <button id="js-add-watched-button" class="main__add-button">
+                  Delete from watched
+                </button>
               </div>
             </div>
           </div>
         </section>
-
       </div>
     </main>
 
     <footer class="footer">
-      <h3 class="footer__title">Text</h3>
+      <div class="footer__wrapper container">
+        <h3 class="footer__title">Made by FECAOff#2_Vn.</h3>
+        <button id="footer__button" class="footer__button is-hidden">
+          <!-- &#11014; -->
+        </button>
+      </div>
     </footer>
-
   </body>
 </html>

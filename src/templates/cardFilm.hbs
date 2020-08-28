@@ -1,10 +1,18 @@
+{{#each this}}<li class="main__film-item">
+    <img src="#" alt="name-film" />
+    <p class="main__film-title">Name of film</p>
+</li>{{/each}} 
+
+
+
+
+
 {{#each this}} <li class="gallery__item js-gallery__item">
     <div class="photo-card js-photo-card">
         <a class="photo-card__link js-photo-card__link"
             href="{{largeImageURL}}">
             <img class="photo-card__image js-photo-card__image"
-                src="{{webformatURL}}"
-                data-source="{{largeImageURL}}"
+                src="{{webformatURL}}" data-source="{{largeImageURL}}"
                 alt="{{user}}" />
         </a>
         <div class="stats">
@@ -19,4 +27,7 @@
         </div>
     </div>
 </li>
-</li> {{/each}}
+</li> {{/each}} {{!-- <li class="main__film-item">
+    <img src="#" alt="name-film" />
+    <p class="main__film-title">Name of film</p>
+</li> --}}
