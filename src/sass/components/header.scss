@@ -41,20 +41,24 @@
       font-weight: 500;
       color: rgba(55, 44, 72, 0.871);
       line-height: 16px;
-      
     }
   }
 }
 
 .nav {
   display: flex;
-  justify-content: center;
-  width: 256px;
 
   &__list {
     display: flex;
     flex-direction: row;
+    justify-content: right;
+    flex-wrap: wrap;
     list-style: none;
+    margin-right: 12px;
+
+    @include tablet {
+      margin-right: 28px;
+    }
   }
 
   &__item {
@@ -66,10 +70,7 @@
     line-height: 1.2;
     text-transform: uppercase;
     text-align: center;
-  }
-
-  &__item:first-child {
-    margin-right: 60px;
+    min-width: 122px;
   }
 
   &__link {
@@ -92,7 +93,6 @@
     &:hover::after,
     &:focus::after {
       width: 100%;
-      // width: 120px;
       left: 0;
     }
 
