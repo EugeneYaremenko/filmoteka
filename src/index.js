@@ -1,3 +1,5 @@
+// import './js/initialHomePage';
+import './js/themovied';
 // import './js/pixabay-search';
 // import './js/services/pixabayAsync-services';
 // import './js/spinner';
