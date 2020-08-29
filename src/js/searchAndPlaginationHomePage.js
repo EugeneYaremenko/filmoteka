@@ -19,6 +19,7 @@ function searchFilms(e) {
   console.log(inputValue);
 
   fetchFilms(inputValue);
+  // fetchPopularMoviesList();
 }
 
 function clearFilmList() {
@@ -45,21 +46,14 @@ function fetchFilms(inputValue) {
       clearFilmList();
       // renderFilms(data.results);
       insertListItems(data.results);
+        // createCardFunc(data.results);
     });
-  //   createCardFunc(data.results);
 
   //   if ((renderFilms.results.length = 0)) {
   //   }
 }
 
-// function renderFilms(pictures) {
-// renderFilms(pictures) {
-  // const gallery = pictures.map(picture => cardTemplate(picture)).join('');
-  // console.log(gallery);
 
-  // refs.filmList.insertAdjacentHTML('beforeend', gallery);
-// }
-// 
 
 async function insertListItems(images) {
   const markupGallery = await cardTemplate(images);
