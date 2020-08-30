@@ -8,30 +8,76 @@
   &__form {
     display: flex;
     align-items: center;
-    justify-content: center;
     background-color: rgb(243, 246, 246);
     box-shadow: 0px 5px 9px 1px rgba(0, 0, 0, 0.23);
+    padding: 20px 0px 22px 50px;
+    position: relative;
+
+    @include tablet {
+      padding-left: 266px;
+    }
+
+    @include desktop {
+      padding-left: 398px;
+    }
+
+    &::before {
+      @include pseudo($display: block);
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      top: 50%;
+      left: 32px;
+      background-image: url(../images/search.png);
+      background-repeat: no-repeat;
+      transform: translateY(-50%);
+
+      @include tablet {
+        left: 240px;
+      }
+
+      @include desktop {
+        left: 370px;
+      }
+    }
+
+    &::after {
+      @include pseudo($display: block);
+      position: absolute;
+      width: 260px;
+      height: 2px;
+      background-color: #9c99a5;
+      top: 42px;
+      left: 32px;
+
+      @include tablet {
+        width: 290px;
+        left: 240px;
+      }
+
+      @include desktop {
+        left: 370px;
+      }
+    }
   }
 
   &__input {
     border: none;
-    border-bottom: 2px solid #9c99a5;
-    width: 256px;
-    background-image: url(../images/search.png);
-    background-repeat: no-repeat;
-    margin-bottom: 22px;
+    text-align: left;
+    width: 240px;
+    background-color: rgb(243, 246, 246);
+    padding-left: 4px;
 
     &::-webkit-input-placeholder {
       font-size: 14.4px;
       font-family: 'Roboto', sans-serif;
       font-weight: 500;
-      color: rgb(0, 0, 0);
+      color: #000000;
       line-height: 1;
-      padding-left: 26px;
     }
 
     @include tablet {
-      width: 286px;
+      width: 260px;
 
       &::-webkit-input-placeholder {
         font-size: 16px;
@@ -46,5 +92,6 @@
     font-weight: 500;
     color: rgb(255, 0, 0);
     line-height: 1;
+    margin-top: 10px;
   }
 }

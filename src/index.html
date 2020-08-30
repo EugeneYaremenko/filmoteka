@@ -23,10 +23,10 @@
         </div>
         <nav class="header__nav nav">
           <ul class="nav__list">
-            <li class="nav__item">
+            <li id="js-navHomeLink" class="nav__item">
               <a href="#" class="nav__link">Home</a>
             </li>
-            <li class="nav__item">
+            <li id="js-navMyLibraryLink" class="nav__item">
               <a href="#" class="nav__link">My library</a>
             </li>
           </ul>
@@ -55,24 +55,8 @@
           </p>
 
           <section class="main__section-film">
-            <ul id="js-film-list" class="main__film-list">
-              <li class="main__film-item">
-                <img src="#" alt="name-film" />
-                <p class="main__film-title">Name of film</p>
-              </li>
-              <li class="main__film-item">
-                <img src="#" alt="name-film" />
-                <p class="main__film-title">Name of film</p>
-              </li>
-              <li class="main__film-item">
-                <img src="#" alt="name-film" />
-                <p class="main__film-title">Name of film</p>
-              </li>
-              <li class="main__film-item">
-                <img src="#" alt="name-film" />
-                <p class="main__film-title">Name of film</p>
-              </li>
-            </ul>
+            <ul id="js-film-list" class="main__film-list"></ul>
+            <ul id="js-film-card" class="main__film-card"></ul>
             <div id="js-pagination-wrapper" class="main__pagination-wrapper">
               <button id="js-prev-button" class="main__prev-button">
                 Prev
@@ -85,7 +69,7 @@
           </section>
         </section>
 
-        <section id="js-library-page" class="main__library-page main__hide">
+        <section id="js-library-page" class="main__library-page">
           <div class="main__navigation-library">
             <button
               id="js-navigation-library-btn-queue"
@@ -100,10 +84,41 @@
               Watched
             </button>
           </div>
-          <ul id="js-library-film-list" class="main__library-film-list"></ul>
+          <ul id="js-library-film-list" class="main__library-film-list">
+            <li class="main__library-film-list-item">
+              <img
+                alt="#"
+                src="https://image.tmdb.org/t/p/w500/l7LRHmPpRsS14wI5i1lhFjRA5d1.jpg"
+              />
+            </li>
+            <li class="main__library-film-list-item">
+              <img
+                alt="#"
+                src="https://image.tmdb.org/t/p/w500/l7LRHmPpRsS14wI5i1lhFjRA5d1.jpg"
+              />
+            </li>
+            <li class="main__library-film-list-item">
+              <img
+                alt="#"
+                src="https://image.tmdb.org/t/p/w500/l7LRHmPpRsS14wI5i1lhFjRA5d1.jpg"
+              />
+            </li>
+            <li class="main__library-film-list-item">
+              <img
+                alt="#"
+                src="https://image.tmdb.org/t/p/w500/l7LRHmPpRsS14wI5i1lhFjRA5d1.jpg"
+              />
+            </li>
+            <li class="main__library-film-list-item">
+              <img
+                alt="#"
+                src="https://image.tmdb.org/t/p/w500/l7LRHmPpRsS14wI5i1lhFjRA5d1.jpg"
+              />
+            </li>
+          </ul>
         </section>
 
-        <section id="js-details-page" class="main__details-page main__hide">
+        <section id="js-details-page" class="main__details-page">
           <div id="js-details-page-wrapper" class="main__details-page-wrapper">
             <div class="main__img-wrapper"></div>
             <div class="main__description-wrapper">

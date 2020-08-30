@@ -1,3 +1,5 @@
+import cardTemplate from '../templates/cardFilm.hbs';
+
 let inputValue;
 let pageNumber = 1;
 let renderFilms;
@@ -15,7 +17,10 @@ function searchFilms(e) {
 
   inputValue = e.currentTarget.elements.query.value;
 
+  console.log(inputValue);
+
   fetchFilms(inputValue);
+  // fetchPopularMoviesList();
 }
 
 function clearFilmList() {
@@ -34,12 +39,22 @@ function fetchFilms(inputValue) {
     .then(response => response.json())
     .then(data => {
       renderFilms = data;
+
       console.log(renderFilms);
       if (renderFilms.total_results == 0) {
         document.querySelector('#js-error').style = 'display: inherit';
       } else {
         clearFilmList();
+         insertListItems(data.results)
         //   createCardFunc(data.results);
       }
     });
+
+}
+
+
+
+async function insertListItems(images) {
+  const markupGallery = await cardTemplate(images);
+  refs.filmList.insertAdjacentHTML('beforeend', markupGallery);
 }

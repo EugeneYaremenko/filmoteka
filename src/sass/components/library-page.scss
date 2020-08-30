@@ -1,0 +1,50 @@
+.main__navigation-library,
+.main__add-button {
+  display: flex;
+  justify-content: center;
+}
+
+.main__navigation-library-btn,
+.main__add-button {
+  width: 150px;
+  box-shadow: 0px 10px 14px -7px #276873;
+  background: linear-gradient(to bottom, #77c1bb 5%, #408c99 100%);
+  background-color: #77c1bb;
+  border-radius: 8px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 20px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #3d768a;
+  margin: 20px;
+
+  &-active {
+    position: relative;
+    top: 1px;
+  }
+}
+
+.main__navigation-library-btn:hover {
+  background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+  background-color: #408c99;
+}
+
+.main__library-film-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &-item {
+    width: 49%;
+    height: 200px;
+    list-style: none;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}
