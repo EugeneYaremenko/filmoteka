@@ -2,6 +2,7 @@ import cardTemplate from '../templates/cardFilm.hbs';
 import { createCardFunc, fetchPopularMoviesList } from './initialHomePage';
 import index from '../index';
 
+
 const baseUrl = 'https://api.themoviedb.org/3/search/movie';
 
 const refs = {

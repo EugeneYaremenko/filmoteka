@@ -3,7 +3,7 @@
 import cardTemplate from '../templates/cardFilm.hbs';
 import cardTemplateFilm from '../templates/cardTemplateFilm.hbs';
 // import searchAndPlaginationHomePage from './searchAndPlaginationHomePage';
-import navigation from './navigation';
+// import {activeDetailsPage} from './navigation';
 
 const refs = {
   searchForm: document.querySelector('#js-form'),
@@ -29,25 +29,57 @@ let pageNumber = 1;
 let renderFilms = [];
 let genres;
 
+let imgPath;
+let filmTitleth;
+let movieId;
+
 console.log(refs.sectionFilm); //* ul
 // console.log(refs.cardFilm); //* для картки
 // console.log(refs.itemFilm); //* null
 // console.log(genres);
 
 async function createCardFunc(imgPath, filmTitle, movieId) {
+  // async function createCardFunc(renderFilms) {
+
+
+
+  // const markupCard = await cardTemplate(renderFilms);
   const markupCard = await cardTemplate(imgPath, filmTitle, movieId);
   refs.sectionFilm.insertAdjacentHTML('beforeend', markupCard);
 
+  // const markupFilm = renderFilms.map(function (movie) {
+  // const markupFilm = renderFilms.forEach(function (movie) {
+
+function name(a, b){
+return a + b;
+}
+  // console.log(movie);
+
+  //   imgPath = movie.backdrop_path;
+  //   filmTitle = movie.title;
+  //   movieId = movie.id;
+
+  // console.log(imgPath);
+  // console.log(filmTitle);
+  // console.log(movieId);
+
+  // const markupCard = cardTemplate(markupFilm);
+  // const markupCard = cardTemplate(imgPath, filmTitle, movieId);
+  // refs.sectionFilm.insertAdjacentHTML('beforeend', markupFilm);
+  // refs.sectionFilm.insertAdjacentHTML('beforeend', markupCard);
+  // refs.sectionFilm.insertAdjacentHTML('beforeend', cardTemplate(markupFilm));
+
   refs.sectionFilm.addEventListener('click', event => {
     console.log(event.target.offsetParent);
+    console.log(movieId);
+
     return activeDetailsPage(movieId, false);
-    // navigation.activeDetailsPage(movieId, false);
   });
   return refs.itemFilm;
+  // return (refs.itemFilm, imgPath, filmTitle, movieId);
 }
 
-// async function fetchPopularMoviesList(pageNumber) {
-async function fetchPopularMoviesList() {
+async function fetchPopularMoviesList(pageNumber) {
   const requestParams = `?api_key=${key}&language=${languageEn}&page=${pageNumber}`;
 
   try {
@@ -55,42 +87,23 @@ async function fetchPopularMoviesList() {
     let data = await response.json();
     let results = await data.results;
 
-    // console.log(results.length);
-
     if (results.length > 1) {
       clearFilmList();
     }
 
     createCardFunc(results);
-    
+    // createCardFunc(renderFilms);
+
     renderFilms = results;
     // renderFilm(renderFilms);
     console.log(renderFilms);
-    
+
     return renderFilms;
   } catch (error) {
     refs.error.classList.remove('visually-hidden');
     return console.warn(error);
   }
 }
-
-// function renderFilm(films) {
-  // console.log(films); //* (20) [{…}, {…}, ... {…}, {…}]
-  // console.log(films[0]); //* {popularity: 614.082, vote_count: 869, video: false, poster_path: "/TnOeov4w0sTtV2gqICqIxVi74V.jpg", id: 605116, …}
-  // console.log(films[0].title); //* Project Power
-  // console.log(films[0].vote_average); //* Project Power
-  // console.log(films[0].popularity); //* 6.7
-  // console.log(films[0].id); //* 614.082
-  // console.log(films[0].genre_ids); //* (3) [28, 80, 878]
-  // console.log(films[0].overview); //* About
-  // console.log(films[0].backdrop_path); //* мала фотка на список
-  // console.log(films[0].poster_path); //* велика фотка на картку
-//   fetchGenres();
-//   const cardImage = films.map(film => cardTemplateFilm(film)).join('');
-//   refs.cardFilm.insertAdjacentHTML('beforeend', cardImage);
-// }
-
-
 
 function fetchGenres() {
   const requestParams = `?api_key=${key}&language=${languageEn}`;
@@ -123,18 +136,21 @@ function clearFilmList() {
 
 // let selectFilm = {};
 
-// function activeDetailsPage(movieId, itsLibraryFilm) {
-//   refs.sectionDetailsPage.classList.remove('visually-hidden');
-//   refs.sectionHomePage.classList.add('visually-hidden');
-//   refs.sectionLibraryPage.classList.add('visually-hidden');
+function activeDetailsPage(movieId, itsLibraryFilm) {
+  refs.sectionDetailsPage.classList.remove('visually-hidden');
+  refs.sectionHomePage.classList.add('visually-hidden');
+  refs.sectionLibraryPage.classList.add('visually-hidden');
 
+  // console.log(renderFilms);
+  // const rendFilm = renderFilms.find(el => el.id === movieId);
+  const rendFilm = renderFilms.find(function (el) {
+    // console.log(el.id); //* 605116, ....
+    // console.log(movieId); //* undefined
 
-//   console.log(renderFilms);
-
-//   const rendFilm = renderFilms.find(el => el.id === movieId);
-//   console.log(rendFilm);
-
-
+    return el.id === movieId;
+  });
+  console.log(rendFilm);
+  return rendFilm;
   // if (itsLibraryFilm) {
   //   let queueFilmList = [
   //     ...JSON.parse(localStorage.getItem('filmsQueue')),
@@ -145,20 +161,15 @@ function clearFilmList() {
   // }
 
   // selectFilm = renderFilms.find(el => el.id === movieId); // Участник 1
-// }
+}
 
-// function renderFilm(films) {
-  // console.log(films); //* (20) [{…}, {…}, ... {…}, {…}]
-  // console.log(films[0]); //* {popularity: 614.082, vote_count: 869, video: false, poster_path: "/TnOeov4w0sTtV2gqICqIxVi74V.jpg", id: 605116, …}
-  // console.log(films[0].title); //* Project Power
-  // console.log(films[0].vote_average); //* Project Power
-  // console.log(films[0].popularity); //* 6.7
-  // console.log(films[0].id); //* 614.082
-  // console.log(films[0].genre_ids); //* (3) [28, 80, 878]
-  // console.log(films[0].overview); //* About
-  // console.log(films[0].backdrop_path); //* мала фотка на список
-  // console.log(films[0].poster_path); //* велика фотка на картку
-//   fetchGenres();
-//   const cardImage = films.map(film => cardTemplateFilm(film)).join('');
-//   refs.cardFilm.insertAdjacentHTML('beforeend', cardImage);
-// }
+export { createCardFunc, fetchPopularMoviesList, fetchGenres };
+
+//! Куди
+//? import { noticeError, mySuccess } from './services/notices';
+//* Виклик потрібної функції
+//? noticeError();
+
+//! Звідки
+//* В самому низу файла, перелік тих функцій, які потрібно експортувати:
+//? export { noticeError, mySuccess };

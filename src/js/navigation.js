@@ -90,5 +90,8 @@ function activeDetailsPage(movieId, itsLibraryFilm) {
 refs.buttonLibraryQueue.removeEventListener('click', drawQueueFilmList); // Участник 5
 refs.buttonLibraryWatched.removeEventListener('click', drawWatchedFilmList);
 
+export { activeDetailsPage,  };
+
 refs.prevButton.removeEventListener('click', plaginationNavigation); // Участник 2
 refs.nextButton.removeEventListener('click', plaginationNavigation);
+
