@@ -26,7 +26,6 @@ function searchFilms(e) {
   inputValue = e.currentTarget.elements.query.value;
 
   fetchFilms(inputValue);
-  // fetchPopularMoviesList();
 }
 
 function clearFilmList() {
