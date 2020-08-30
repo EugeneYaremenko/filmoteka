@@ -20,7 +20,6 @@ function searchFilms(e) {
   console.log(inputValue);
 
   fetchFilms(inputValue);
-  // fetchPopularMoviesList();
 }
 
 function clearFilmList() {

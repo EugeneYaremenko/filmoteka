@@ -1,4 +1,4 @@
-let scrollElement = document.querySelector('#scrollTtop-button');
+let scrollElement = document.querySelector('#footer__button');
 
 window.onscroll = function () {
   if (
