@@ -1,9 +1,21 @@
+let buttonLibraryQueue = document.querySelector(
+  '#js-navigation-library-btn-queue',
+);
+
+let buttonLibraryWatched = document.querySelector(
+  '#js-navigation-library-btn-watched',
+);
+
 let libraryFilmList = document.querySelector('#js-library-film-list');
 
 function createLibraryCardFunc(imgPath, filmTitle, movieId, voteAverage) {
   const createListItem = ({ imgPath, filmTitle, movieId, voteAverage }) =>
-    `<li class="main__library-film-list-item">
-        <img alt="${filmTitle}" src="https://image.tmdb.org/t/p/w500/${imgPath}">
+    `<li class="main__film-item js-film-item">
+        <div class="main__film-item-wrapper js-film-item-wrapper">
+          <a class="main__film-link js-film-link">
+            <img alt="${filmTitle}" src="https://image.tmdb.org/t/p/w500/${imgPath}" class="main__film-image js-film-image">
+          </a>
+        </div>
 
         <span class="main__library-film-list-title">${filmTitle}</span>
         <span class="main__library-film-list-popularity">Popularity: ${voteAverage}</span>
@@ -86,3 +98,5 @@ function drawWatchedFilmList() {
   buttonLibraryQueue.classList.remove('main__navigation-library-btn-active');
   buttonLibraryWatched.classList.add('main__navigation-library-btn-active');
 }
+
+export { drawQueueFilmList, drawWatchedFilmList };
