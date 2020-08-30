@@ -106,17 +106,44 @@
           </ul>
         </section>
 
-        <section id="js-details-page" class="main__details-page">
+        <section id="js-details-page" class="main__details-page main__hide">
           <div id="js-details-page-wrapper" class="main__details-page-wrapper">
-            <div class="main__img-wrapper"></div>
+            <div class="main__img-wrapper">
+              <img id="js-mainImg" class="main__img" />
+            </div>
             <div class="main__description-wrapper">
-              <div class="main__description-wrapper"></div>
-              <div class="main__add-list-wrapper">
-                <button id="js-add-queue-button" class="main__add-button">
-                  Delete from queue
+              <h2 class="main__description-title" id="js-descriptionTitle"></h2>
+              <table class="main__description-table">
+                <tbody class="main__description-table--tbody">
+                  <tr class="main__description-table--tr">
+                    <td>vote/votes</td>
+                    <td class="js-tableVote"></td>
+                  </tr>
+                  <tr class="main__description-table--tr">
+                    <td>popularity</td>
+                    <td class="js-tablePopularity"></td>
+                  </tr>
+                  <tr class="main__description-table--tr">
+                    <td>original title</td>
+                    <td class="js-tableOriginalTitle"></td>
+                  </tr>
+                  <tr class="main__description-table--tr">
+                    <td>genre</td>
+                    <td class="js-tableGenre"></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h3 class="main__description-about">About</h3>
+              <p
+                class="main__description-about--info"
+                id="js-descriptionAboutInfo"
+              ></p>
+              <div class="main__add-button-wrapper">
+                <button id="js-addQueueButton" class="main__add-button">
+                  Add to queue
                 </button>
-                <button id="js-add-watched-button" class="main__add-button">
-                  Delete from watched
+                <button id="js-addWatchedButton" class="main__add-button">
+                  Add to watched
                 </button>
               </div>
             </div>
