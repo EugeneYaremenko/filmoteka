@@ -4,6 +4,8 @@ import './js/initialHomePage';
 import './js/buttonScrollTop';
 import './js/navigation';
 import './js/searchAndPlaginationHomePage';
+import './js/navigation';
+import './js/libraryPage';
 
 
 import './sass/main.scss';
