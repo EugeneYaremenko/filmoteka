@@ -46,7 +46,6 @@ function fetchFilms(inputValue) {
       } else {
         clearFilmList();
         insertListItems(data.results);
-
         //   createCardFunc(data.results);
       }
       if (pageNumber <= 1) {
