@@ -37,8 +37,8 @@ function activeHomePage() {
   /*   refs.prevButton.addEventListener('click', plaginationNavigation);  // Участник 2
   refs.nextButton.addEventListener('click', plaginationNavigation); */
 
-  /*   refs.addQueueButton.removeEventListener('click', toggleToQueue);        // Участник 4
-  refs.addWatchedButton.removeEventListener('click', toggleToWatched); */
+  refs.addQueueButton.removeEventListener('click', toggleToQueue); // Участник 4
+  refs.addWatchedButton.removeEventListener('click', toggleToWatched);
 
   refs.buttonLibraryQueue.removeEventListener('click', drawQueueFilmList); // Участник 5
   refs.buttonLibraryWatched.removeEventListener('click', drawWatchedFilmList);
@@ -55,8 +55,8 @@ function activeLibraryPage() {
   refs.buttonLibraryQueue.addEventListener('click', drawQueueFilmList); // Участник 5
   refs.buttonLibraryWatched.addEventListener('click', drawWatchedFilmList);
 
-  /*   refs.addQueueButton.removeEventListener('click', toggleToQueue);       // Участник 4
-  refs.addWatchedButton.removeEventListener('click', toggleToWatched); */
+  refs.addQueueButton.removeEventListener('click', toggleToQueue); // Участник 4
+  refs.addWatchedButton.removeEventListener('click', toggleToWatched);
 
   /*   refs.prevButton.removeEventListener('click', plaginationNavigation);  // Участник 2
   refs.nextButton.removeEventListener('click', plaginationNavigation); */
@@ -74,15 +74,14 @@ function activeDetailsPage(movieId, itsLibraryFilm) {
       ...JSON.parse(localStorage.getItem('filmsQueue')),
       ...JSON.parse(localStorage.getItem('filmsWatched')),
     ];
-
     selectFilm = queueFilmList.find(el => el.id === movieId);
   }
 
   selectFilm = renderFilms.find(el => el.id === movieId); // Участник 1
-} 
-
-/* showDetails(selectFilm); */ /* refs.addQueueButton.addEventListener('click', toggleToQueue);          // Участник 4
-refs.addWatchedButton.addEventListener('click', toggleToWatched); */
+  showDetails(selectFilm);
+  refs.addQueueButton.addEventListener('click', toggleToQueue); // Участник 4
+  refs.addWatchedButton.addEventListener('click', toggleToWatched);
+}
 
 /* refs.buttonLibraryQueue.removeEventListener('click', drawQueueFilmList); // Участник 5
 refs.buttonLibraryWatched.removeEventListener('click', drawWatchedFilmList); */
