@@ -5,6 +5,7 @@ let renderFilms;
 const refs = {
   searchForm: document.querySelector('#js-form'),
   filmList: document.querySelector('#js-film-list'),
+  errorMessage: document.querySelector('#js-error'),
 };
 
 refs.searchForm.addEventListener('submit', searchFilms);
@@ -33,11 +34,12 @@ function fetchFilms(inputValue) {
     .then(response => response.json())
     .then(data => {
       renderFilms = data;
-      //   console.log(renderFilms.results.length);
+      console.log(renderFilms);
+      if (renderFilms.total_results == 0) {
+        document.querySelector('#js-error').style = 'display: inherit';
+      } else {
+        clearFilmList();
+        //   createCardFunc(data.results);
+      }
     });
-  clearFilmList();
-  //   createCardFunc(data.results);
-
-  //   if ((renderFilms.results.length = 0)) {
-  //   }
 }
