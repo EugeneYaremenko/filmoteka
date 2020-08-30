@@ -39,12 +39,40 @@
   justify-content: space-between;
 
   &-item {
+    position: relative;
     width: 49%;
-    height: 200px;
     list-style: none;
     overflow: hidden;
     margin-bottom: 10px;
     border-radius: 10px;
     cursor: pointer;
+    text-shadow: 0 0 5px #ffffa0, 0 0 10px #ffff4d, 0 0 15px #ffff41,
+      0 0 20px #ffff2a, 0 0 25px #ffff2b, 0 0 30px #fefe00, 0 0 35px #f7f700;
+  }
+
+  &-title,
+  &-popularity {
+    position: absolute;
+    font-size: larger;
+    color: #fff;
+    text-align: center;
+  }
+
+  &-title {
+    bottom: 10%;
+
+    @include tablet {
+      left: 15px;
+      bottom: 15px;
+    }
+  }
+
+  &-popularity {
+    top: 90%;
+
+    @include tablet {
+      top: 15px;
+      right: 15px;
+    }
   }
 }

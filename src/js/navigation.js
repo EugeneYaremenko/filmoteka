@@ -40,8 +40,8 @@ function activeHomePage() {
   /*   refs.addQueueButton.removeEventListener('click', toggleToQueue);        // Участник 4
   refs.addWatchedButton.removeEventListener('click', toggleToWatched); */
 
-  /*   refs.buttonLibraryQueue.removeEventListener('click', drawQueueFilmList);     // Участник 5
-  refs.buttonLibraryWatched.removeEventListener('click', drawWatchedFilmList); */
+  refs.buttonLibraryQueue.removeEventListener('click', drawQueueFilmList); // Участник 5
+  refs.buttonLibraryWatched.removeEventListener('click', drawWatchedFilmList);
 }
 
 function activeLibraryPage() {
@@ -49,11 +49,11 @@ function activeLibraryPage() {
   refs.sectionHomePage.classList.add('visually-hidden');
   refs.sectionDetailsPage.classList.add('visually-hidden');
 
-  /*   drawQueueFilmList();
-  refs.buttonLibraryQueue.classList.add('main__navigation-library-btn-active'); */ // Участник 5
+  drawQueueFilmList();
+  refs.buttonLibraryQueue.classList.add('main__navigation-library-btn-active'); // Участник 5
 
-  /*   refs.buttonLibraryQueue.addEventListener('click', drawQueueFilmList);      // Участник 5
-  refs.buttonLibraryWatched.addEventListener('click', drawWatchedFilmList); */
+  refs.buttonLibraryQueue.addEventListener('click', drawQueueFilmList); // Участник 5
+  refs.buttonLibraryWatched.addEventListener('click', drawWatchedFilmList);
 
   /*   refs.addQueueButton.removeEventListener('click', toggleToQueue);       // Участник 4
   refs.addWatchedButton.removeEventListener('click', toggleToWatched); */
@@ -79,14 +79,12 @@ function activeDetailsPage(movieId, itsLibraryFilm) {
   }
 
   selectFilm = renderFilms.find(el => el.id === movieId); // Участник 1
-}
+} 
 
-/* showDetails(selectFilm); */ // Участник 4
-
-/* refs.addQueueButton.addEventListener('click', toggleToQueue);          // Участник 4
+/* showDetails(selectFilm); */ /* refs.addQueueButton.addEventListener('click', toggleToQueue);          // Участник 4
 refs.addWatchedButton.addEventListener('click', toggleToWatched); */
 
-/* refs.buttonLibraryQueue.removeEventListener('click', drawQueueFilmList);   // Участник 5
+/* refs.buttonLibraryQueue.removeEventListener('click', drawQueueFilmList); // Участник 5
 refs.buttonLibraryWatched.removeEventListener('click', drawWatchedFilmList); */
 
 /* refs.prevButton.removeEventListener('click', plaginationNavigation);   // Участник 2
