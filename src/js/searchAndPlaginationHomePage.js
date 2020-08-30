@@ -1,8 +1,7 @@
 import cardTemplate from '../templates/cardFilm.hbs';
+import { createCardFunc, fetchPopularMoviesList } from './initialHomePage';
+import index from '../index';
 
-let inputValue;
-let pageNumber = 1;
-let renderFilms;
 const baseUrl = 'https://api.themoviedb.org/3/search/movie';
 
 const refs = {
@@ -23,9 +22,9 @@ refs.paginationBlock.addEventListener('click', plaginationNavigation);
 function searchFilms(e) {
   e.preventDefault();
 
-  inputValue = e.currentTarget.elements.query.value;
+  index.inputValue = e.currentTarget.elements.query.value;
 
-  fetchFilms(inputValue);
+  fetchFilms(index.inputValue);
 }
 
 function clearFilmList() {
@@ -34,7 +33,7 @@ function clearFilmList() {
 
 function fetchFilms(inputValue) {
   const key = '0e322ad2a3bf93179a3983749fdc0c73';
-  const requestParams = `?api_key=${key}&query=${inputValue}&page=${pageNumber}`;
+  const requestParams = `?api_key=${key}&query=${inputValue}&page=${index.pageNumber}`;
   fetch(baseUrl + requestParams)
     .then(response => response.json())
     .then(data => {
@@ -43,11 +42,12 @@ function fetchFilms(inputValue) {
       if (renderFilms.total_results == 0) {
         document.querySelector('#js-error').classList.remove('visually-hidden');
       } else {
+        document.querySelector('#js-error').classList.add('visually-hidden');
         clearFilmList();
-        insertListItems(data.results);
-        //   createCardFunc(data.results);
+        // insertListItems(data.results);
+        createCardFunc(data.results);
       }
-      if (pageNumber <= 1) {
+      if (index.pageNumber <= 1) {
         refs.prevButton.classList.add('visually-hidden');
       } else {
         refs.prevButton.classList.remove('visually-hidden');
@@ -55,21 +55,24 @@ function fetchFilms(inputValue) {
     });
 }
 
-async function insertListItems(images) {
-  const markupGallery = await cardTemplate(images);
-  refs.filmList.insertAdjacentHTML('beforeend', markupGallery);
-}
+// async function insertListItems(images) {
+//   const markupGallery = await cardTemplate(images);
+//   refs.filmList.insertAdjacentHTML('beforeend', markupGallery);
+// }
 
 function plaginationNavigation(e) {
   event.preventDefault();
 
   if (event.target.nodeName == 'BUTTON') {
     if (event.target.name == 'Prev') {
-      pageNumber -= 1;
+      index.pageNumber -= 1;
     } else if (event.target.name == 'Next') {
-      pageNumber += 1;
+      index.pageNumber += 1;
     }
 
-    fetchFilms(inputValue);
+    fetchFilms(index.inputValue);
+    fetchPopularMoviesList(index.inputValue);
+    refs.pageNum.textContent = index.pageNumber;
+    console.log(refs.pageNum.textContent);
   }
 }
