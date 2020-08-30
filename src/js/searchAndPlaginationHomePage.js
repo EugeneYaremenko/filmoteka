@@ -1,4 +1,5 @@
-import cardTemplate from '../templates/cardFilm.hbs';
+// import cardTemplate from '../templates/cardFilm.hbs';
+import { createCardFunc, fetchPopularMoviesList } from './initialHomePage';
 
 let inputValue;
 let pageNumber = 1;
@@ -44,8 +45,8 @@ function fetchFilms(inputValue) {
         document.querySelector('#js-error').classList.remove('visually-hidden');
       } else {
         clearFilmList();
-        insertListItems(data.results);
-        //   createCardFunc(data.results);
+        // insertListItems(data.results);
+        createCardFunc(data.results);
       }
       if (pageNumber <= 1) {
         refs.prevButton.classList.add('visually-hidden');
@@ -55,10 +56,10 @@ function fetchFilms(inputValue) {
     });
 }
 
-async function insertListItems(images) {
-  const markupGallery = await cardTemplate(images);
-  refs.filmList.insertAdjacentHTML('beforeend', markupGallery);
-}
+// async function insertListItems(images) {
+//   const markupGallery = await cardTemplate(images);
+//   refs.filmList.insertAdjacentHTML('beforeend', markupGallery);
+// }
 
 function plaginationNavigation(e) {
   event.preventDefault();
@@ -71,5 +72,6 @@ function plaginationNavigation(e) {
     }
 
     fetchFilms(inputValue);
+    fetchPopularMoviesList(pageNumber);
   }
 }

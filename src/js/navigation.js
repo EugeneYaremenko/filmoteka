@@ -88,3 +88,5 @@ refs.buttonLibraryWatched.removeEventListener('click', drawWatchedFilmList); */
 
 /* refs.prevButton.removeEventListener('click', plaginationNavigation);   // Участник 2
 refs.nextButton.removeEventListener('click', plaginationNavigation); */
+
+export { activeDetailsPage,  };
