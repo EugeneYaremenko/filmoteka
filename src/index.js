@@ -6,8 +6,10 @@
 // import './js/buttonScrollTop';
 // import './js/services/notices';
 // import './js/gallery-item';
-import './js/navigation';
+
 import './js/searchAndPlaginationHomePage';
+import './js/navigation';
+import './js/libraryPage';
 
 
 import './sass/main.scss';
