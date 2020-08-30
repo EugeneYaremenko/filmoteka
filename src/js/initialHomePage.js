@@ -4,7 +4,7 @@ import cardTemplate from '../templates/cardFilm.hbs';
 import cardTemplateFilm from '../templates/cardTemplateFilm.hbs';
 // import searchAndPlaginationHomePage from './searchAndPlaginationHomePage';
 import navigation from './navigation';
-import global from '../index';
+import global from './constants';
 
 const refs = {
   searchForm: document.querySelector('#js-form'),
