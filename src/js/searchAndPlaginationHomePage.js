@@ -60,7 +60,7 @@ async function insertListItems(images) {
   refs.filmList.insertAdjacentHTML('beforeend', markupGallery);
 }
 
-function plaginationNavigation(e) {
+export function plaginationNavigation(e) {
   event.preventDefault();
 
   if (event.target.nodeName == 'BUTTON') {
