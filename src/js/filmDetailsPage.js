@@ -20,6 +20,8 @@
 // * из DOM достукивается до нужных кнопок участник 3 и вешает функции  toggleToQueue и toggleToWatched слушателями на страницу деталей
 // и удаляет там где не нужно.
 
+import global from './constants';
+
 const refs = {
   mainImg: document.querySelector('#js-mainImg'),
   descriptionTitle: document.querySelector('#js-descriptionTitle'),
@@ -36,61 +38,68 @@ function monitorButtonStatusText() {
   let filmsFromQueueLS = localStorage.getItem('filmsQueue');
   let filmsFromWatchedLS = localStorage.getItem('filmsWatched');
 
+  console.log('filmsFromQueueLS: ', filmsFromQueueLS);
+
   if (filmsFromQueueLS !== null) {
-    JSON.parse(filmsFromQueueLS).find(ar => ar.id === selectFilm)
+    JSON.parse(filmsFromQueueLS).find(ar => ar.id === global.selectFilm.id)
       ? (refs.addQueueButton.textContent = 'Delete from queue')
       : (refs.addQueueButton.textContent = 'Add to queue');
-  }
-  refs.addQueueButton.textContent = 'Add to queue';
+  } else refs.addQueueButton.textContent = 'Add to queue';
 
   if (filmsFromWatchedLS !== null) {
-    JSON.parse(filmsFromWatchedLS).find(ar => ar.id === selectFilm)
-      ? (refs.addWatchedButton.textContent = 'Delete from queue')
-      : (refs.addWatchedButton.textContent = 'Add to queue');
-  }
-  refs.addWatchedButton.textContent = 'Add to watched';
+    JSON.parse(filmsFromWatchedLS).find(ar => ar.id === global.selectFilm.id)
+      ? (refs.addWatchedButton.textContent = 'Delete from watched')
+      : (refs.addWatchedButton.textContent = 'Add to watched');
+  } else refs.addWatchedButton.textContent = 'Add to watched';
 }
 
 function toggleToQueue() {
   let arr = [];
   let arrNew = [];
-  const filmsQueueLS = getItem('filmsQueue');
+  let filmsQueueLS = localStorage.getItem('filmsQueue');
   if (filmsQueueLS !== null) {
     arr.push(JSON.parse(filmsQueueLS));
   }
-  if (arr.find(ar => ar.id === selectFilm)) {
-    arrNew = arr.filter(ar => ar.id !== selectFilm);
+  if (arr.find(ar => ar.id === global.selectFilm.id)) {
+    arrNew = arr.filter(ar => ar.id !== global.selectFilm.id);
   }
-  arrNew.push(selectFilm);
+  arrNew.push(global.selectFilm);
   localStorage.setItem('filmsQueue', JSON.stringify(arrNew));
+  localStorage.setItem('filmsQueue', JSON.stringify(arr));
   monitorButtonStatusText();
 }
 
 function toggleToWatched() {
   let arr = [];
   let arrNew = [];
-  const filmsWatchedLS = getItem('filmsWatched');
+  const filmsWatchedLS = localStorage.getItem('filmsWatched');
   if (filmsWatchedLS !== null) {
     arr.push(JSON.parse(filmsWatchedLS));
   }
-  if (arr.find(ar => ar.id === selectFilm)) {
-    arrNew = arr.filter(ar => ar.id !== selectFilm);
+  if (arr.find(ar => ar.id === global.selectFilm.id)) {
+    arrNew = arr.filter(ar => ar.id !== global.selectFilm.id);
   }
-  arrNew.push(selectFilm);
+  arrNew.push(global.selectFilm);
   localStorage.setItem('filmsWatched', JSON.stringify(arrNew));
+  localStorage.setItem('filmsWatched', JSON.stringify(arr));
   monitorButtonStatusText();
 }
 
 function showDetails(selectFilm) {
+  console.log('selectFilm showDetails: ', selectFilm);
   refs.mainImg.setAttribute(
     'src',
-    `https://image.tmdb.org/t/p/w500/${selectFilm.poster}`,
+    `https://image.tmdb.org/t/p/w500/${selectFilm.poster_path}`,
   );
   refs.descriptionTitle.textContent = selectFilm.title;
-  refs.tableVote.textContent = selectFilm.vote_average / selectFilm.vote_count;
+  refs.tableVote.textContent = `${selectFilm.vote_average} / ${selectFilm.vote_count}`;
   refs.tablePopularity.textContent = selectFilm.popularity;
   refs.tableOriginalTitle.textContent = selectFilm.original_title;
-  refs.tableGenre.textContent = selectFilm.genre;
-  refs.descriptionAboutInfo = selectFilm.overview;
+  // refs.tableGenre.textContent = `${selectFilm.genre_ids.name}`;
+  refs.tableGenre.textContent = selectFilm.genre_ids;
+  // console.log('selectFilm[selectFilm.genre_ids]: ', selectFilm[this.genre_ids]);
+  refs.descriptionAboutInfo.textContent = selectFilm.overview;
   monitorButtonStatusText();
 }
+
+export { showDetails, toggleToQueue, toggleToWatched };
