@@ -1,10 +1,10 @@
-
 import { renderFilms } from './initialHomePage';
 import { showDetails, toggleToQueue, toggleToWatched } from './filmDetailsPage';
 
 import { drawQueueFilmList, drawWatchedFilmList } from './libraryPage';
 import { plaginationNavigation } from './searchAndPlaginationHomePage';
 
+import global from './constants';
 
 const refs = {
   navHomeLink: document.querySelector('#js-navHomeLink'),
@@ -94,7 +94,7 @@ function activeDetailsPage(movie, itsLibraryFilm) {
   }
   // console.log('movie navigation: ', movie);
   // console.log('movie.id navigation: ', movie.id);
-  // console.log('renderFilms navigation: ', renderFilms);
+  console.log('global.renderFilms navigation: ', global.renderFilms);
   selectFilm = global.renderFilms.find(el => el.id === movie.id); // Участник 1
   // console.log('selectFilm navigation: ', selectFilm);
   showDetails(selectFilm);
@@ -109,4 +109,3 @@ refs.prevButton.removeEventListener('click', plaginationNavigation); // Учас
 refs.nextButton.removeEventListener('click', plaginationNavigation);
 
 export { activeDetailsPage, selectFilm };
-

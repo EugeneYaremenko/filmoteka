@@ -20,7 +20,7 @@
 // * из DOM достукивается до нужных кнопок участник 3 и вешает функции  toggleToQueue и toggleToWatched слушателями на страницу деталей
 // и удаляет там где не нужно.
 
-import { selectFilm } from './navigation';
+import global from './constants';
 
 const refs = {
   mainImg: document.querySelector('#js-mainImg'),
@@ -38,16 +38,16 @@ function monitorButtonStatusText() {
   let filmsFromQueueLS = localStorage.getItem('filmsQueue');
   let filmsFromWatchedLS = localStorage.getItem('filmsWatched');
 
-  console.log(filmsFromQueueLS);
+  console.log('filmsFromQueueLS: ', filmsFromQueueLS);
 
   if (filmsFromQueueLS !== null) {
-    JSON.parse(filmsFromQueueLS).find(ar => ar.id === selectFilm.id)
+    JSON.parse(filmsFromQueueLS).find(ar => ar.id === global.selectFilm.id)
       ? (refs.addQueueButton.textContent = 'Delete from queue')
       : (refs.addQueueButton.textContent = 'Add to queue');
   } else refs.addQueueButton.textContent = 'Add to queue';
 
   if (filmsFromWatchedLS !== null) {
-    JSON.parse(filmsFromWatchedLS).find(ar => ar.id === selectFilm.id)
+    JSON.parse(filmsFromWatchedLS).find(ar => ar.id === global.selectFilm.id)
       ? (refs.addWatchedButton.textContent = 'Delete from watched')
       : (refs.addWatchedButton.textContent = 'Add to watched');
   } else refs.addWatchedButton.textContent = 'Add to watched';
@@ -60,10 +60,10 @@ function toggleToQueue() {
   if (filmsQueueLS !== null) {
     arr.push(JSON.parse(filmsQueueLS));
   }
-  if (arr.find(ar => ar.id === selectFilm.id)) {
-    arrNew = arr.filter(ar => ar.id !== selectFilm.id);
+  if (arr.find(ar => ar.id === global.selectFilm.id)) {
+    arrNew = arr.filter(ar => ar.id !== global.selectFilm.id);
   }
-  arrNew.push(selectFilm);
+  arrNew.push(global.selectFilm);
   localStorage.setItem('filmsQueue', JSON.stringify(arrNew));
   localStorage.setItem('filmsQueue', JSON.stringify(arr));
   monitorButtonStatusText();
@@ -76,10 +76,10 @@ function toggleToWatched() {
   if (filmsWatchedLS !== null) {
     arr.push(JSON.parse(filmsWatchedLS));
   }
-  if (arr.find(ar => ar.id === selectFilm.id)) {
-    arrNew = arr.filter(ar => ar.id !== selectFilm.id);
+  if (arr.find(ar => ar.id === global.selectFilm.id)) {
+    arrNew = arr.filter(ar => ar.id !== global.selectFilm.id);
   }
-  arrNew.push(selectFilm);
+  arrNew.push(global.selectFilm);
   localStorage.setItem('filmsWatched', JSON.stringify(arrNew));
   localStorage.setItem('filmsWatched', JSON.stringify(arr));
   monitorButtonStatusText();
