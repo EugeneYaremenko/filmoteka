@@ -9,24 +9,18 @@ let buttonLibraryWatched = document.querySelector(
 let libraryFilmList = document.querySelector('#js-library-film-list');
 
 function createLibraryCardFunc(imgPath, filmTitle, movieId, voteAverage) {
-  const createListItem = ({ imgPath, filmTitle, movieId, voteAverage }) =>
-    `<li class="main__film-item js-film-item">
-        <div class="main__film-item-wrapper js-film-item-wrapper">
-          <a class="main__film-link js-film-link">
-            <img alt="${filmTitle}" src="https://image.tmdb.org/t/p/w500/${imgPath}" class="main__film-image js-film-image">
-          </a>
-        </div>
+  const createListItem = `<li class="main__film-item js-film-item">
+    <div class="main__film-item-wrapper js-film-item-wrapper">
+      <a class="main__film-link js-film-link">
+        <img alt="${filmTitle}" src="https://image.tmdb.org/t/p/w500/${imgPath}" class="main__film-image js-film-image">
+      </a>
+    </div>
 
-        <span class="main__library-film-list-title">${filmTitle}</span>
-        <span class="main__library-film-list-popularity">Popularity: ${voteAverage}</span>
+    <span class="main__library-film-list-title">${filmTitle}</span>
+    <span class="main__library-film-list-popularity">Popularity: ${voteAverage}</span>
     </li>`;
 
-  const listItemMarkup = images.reduce(
-    (acc, item) => acc + createListItem(item),
-    '',
-  );
-
-  libraryFilmList.insertAdjacentHTML('afterbegin', listItemMarkup);
+  libraryFilmList.insertAdjacentHTML('afterbegin', createListItem);
 
   listItem.addEventListener('click', () => activeDetailsPage(movieId, true));
 
