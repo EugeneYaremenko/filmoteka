@@ -95,7 +95,7 @@ function activeDetailsPage(movie, itsLibraryFilm) {
   // console.log('movie navigation: ', movie);
   // console.log('movie.id navigation: ', movie.id);
   // console.log('renderFilms navigation: ', renderFilms);
-  selectFilm = renderFilms.find(el => el.id === movie.id); // Участник 1
+  selectFilm = global.renderFilms.find(el => el.id === movie.id); // Участник 1
   // console.log('selectFilm navigation: ', selectFilm);
   showDetails(selectFilm);
   refs.addQueueButton.addEventListener('click', toggleToQueue); // Участник 4
