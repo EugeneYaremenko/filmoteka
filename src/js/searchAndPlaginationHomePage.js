@@ -71,7 +71,7 @@ export function plaginationNavigation(e) {
     }
 
     fetchFilms(index.inputValue);
-    fetchPopularMoviesList(index.inputValue);
+    fetchPopularMoviesList(index.pageNumber);
     refs.pageNum.textContent = index.pageNumber;
     console.log(refs.pageNum.textContent);
   }

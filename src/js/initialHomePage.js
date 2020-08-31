@@ -4,6 +4,7 @@ import cardTemplate from '../templates/cardFilm.hbs';
 import cardTemplateFilm from '../templates/cardTemplateFilm.hbs';
 // import searchAndPlaginationHomePage from './searchAndPlaginationHomePage';
 // import {activeDetailsPage} from './navigation';
+import index from '../index';
 
 const refs = {
   searchForm: document.querySelector('#js-form'),
@@ -11,6 +12,8 @@ const refs = {
   itemFilm: document.querySelector('#js-film-item'),
   error: document.querySelector('#js-error'),
   cardFilm: document.querySelector('#js-film-card'),
+  prevButton: document.querySelector('#js-prev-button'),
+  nextButton: document.querySelector('#js-next-button'),
 
   sectionHomePage: document.querySelector('#js-home-page'),
   sectionLibraryPage: document.querySelector('#js-library-page'),
@@ -33,6 +36,9 @@ let imgPath;
 let filmTitleth;
 let movieId;
 
+// console.log(index.pageNumber);
+console.log(pageNumber);
+
 console.log(refs.sectionFilm); //* ul
 // console.log(refs.cardFilm); //* для картки
 // console.log(refs.itemFilm); //* null
@@ -41,8 +47,6 @@ console.log(refs.sectionFilm); //* ul
 async function createCardFunc(imgPath, filmTitle, movieId) {
   // async function createCardFunc(renderFilms) {
 
-
-
   // const markupCard = await cardTemplate(renderFilms);
   const markupCard = await cardTemplate(imgPath, filmTitle, movieId);
   refs.sectionFilm.insertAdjacentHTML('beforeend', markupCard);
@@ -50,9 +54,9 @@ async function createCardFunc(imgPath, filmTitle, movieId) {
   // const markupFilm = renderFilms.map(function (movie) {
   // const markupFilm = renderFilms.forEach(function (movie) {
 
-function name(a, b){
-return a + b;
-}
+  function name(a, b) {
+    return a + b;
+  }
   // console.log(movie);
 
   //   imgPath = movie.backdrop_path;
@@ -97,6 +101,14 @@ async function fetchPopularMoviesList(pageNumber) {
     renderFilms = results;
     // renderFilm(renderFilms);
     console.log(renderFilms);
+
+    if (pageNumber >= 1) {
+      // refs.prevButton.classList.add('visually-hidden');
+      refs.prevButton.classList.remove('visually-hidden');
+    } else {
+      // refs.prevButton.classList.remove('visually-hidden');
+      refs.prevButton.classList.add('visually-hidden');
+    }
 
     return renderFilms;
   } catch (error) {
