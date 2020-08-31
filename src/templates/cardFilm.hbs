@@ -1,9 +1,10 @@
 {{#each this}}<li id="js-film-item" class="main__film-item js-film-item">
     <div class="main__film-item-wrapper js-film-item-wrapper">
-        <a class="main__film-link js-film-link">
-            <img src="https://image.tmdb.org/t/p/w500{{backdrop_path}}"
-                alt="{{original_title}}" class="main__film-image js-film-image" />
+        <a id="{{id}}" class="main__film-link js-film-link">
+            <img src="https://image.tmdb.org/t/p/w500{{backdrop_path}}" alt="{{original_title}}"
+                class="main__film-image js-film-image" />
         </a>
     </div>
     <h3 class="main__film-title">{{title}}</h3>
+    {{!-- <p class="stats-item">{{id}}</p> --}}
 </li>{{/each}}
