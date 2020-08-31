@@ -1,6 +1,10 @@
 import cardTemplate from '../templates/cardFilm.hbs';
 import { createCardFunc, fetchPopularMoviesList } from './initialHomePage';
-import index from '../index';
+
+import global from './constants';
+// let inputValue;
+// let pageNumber = 1;
+// let renderFilms;
 
 const baseUrl = 'https://api.themoviedb.org/3/search/movie';
 
@@ -22,9 +26,9 @@ refs.paginationBlock.addEventListener('click', plaginationNavigation);
 function searchFilms(e) {
   e.preventDefault();
 
-  index.inputValue = e.currentTarget.elements.query.value;
+  global.inputValue = e.currentTarget.elements.query.value;
 
-  fetchFilms(index.inputValue);
+  fetchFilms(global.inputValue);
 }
 
 function clearFilmList() {
@@ -33,13 +37,13 @@ function clearFilmList() {
 
 function fetchFilms(inputValue) {
   const key = '0e322ad2a3bf93179a3983749fdc0c73';
-  const requestParams = `?api_key=${key}&query=${inputValue}&page=${index.pageNumber}`;
+  const requestParams = `?api_key=${key}&query=${inputValue}&page=${global.pageNumber}`;
   fetch(baseUrl + requestParams)
     .then(response => response.json())
     .then(data => {
-      renderFilms = data;
-      console.log(renderFilms);
-      if (renderFilms.total_results == 0) {
+      global.renderFilms = data;
+      console.log(global.renderFilms);
+      if (global.renderFilms.total_results == 0) {
         document.querySelector('#js-error').classList.remove('visually-hidden');
       } else {
         document.querySelector('#js-error').classList.add('visually-hidden');
@@ -47,7 +51,7 @@ function fetchFilms(inputValue) {
         // insertListItems(data.results);
         createCardFunc(data.results);
       }
-      if (index.pageNumber <= 1) {
+      if (global.pageNumber <= 1) {
         refs.prevButton.classList.add('visually-hidden');
       } else {
         refs.prevButton.classList.remove('visually-hidden');
@@ -65,14 +69,14 @@ export function plaginationNavigation(e) {
 
   if (event.target.nodeName == 'BUTTON') {
     if (event.target.name == 'Prev') {
-      index.pageNumber -= 1;
+      global.pageNumber -= 1;
     } else if (event.target.name == 'Next') {
-      index.pageNumber += 1;
+      global.pageNumber += 1;
     }
 
-    fetchFilms(index.inputValue);
-    fetchPopularMoviesList(index.pageNumber);
-    refs.pageNum.textContent = index.pageNumber;
+    fetchFilms(global.inputValue);
+    fetchPopularMoviesList(global.inputValue);
+    refs.pageNum.textContent = global.pageNumber;
     console.log(refs.pageNum.textContent);
   }
 }

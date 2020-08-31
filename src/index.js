@@ -9,11 +9,3 @@ import './js/filmDetailsPage';
 import './js/libraryPage';
 
 import './sass/main.scss';
-
-export default {
-  inputValue: '',
-  pageNumber: 1,
-  renderFilms: [],
-  genres: {},
-  selectFilm: {},
-};
