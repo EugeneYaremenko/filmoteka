@@ -7,6 +7,7 @@ import navigation from './navigation';
 import global from './constants';
 // import {activeDetailsPage} from './navigation';
 // import index from '../index';
+import { plaginationNavigation } from './searchAndPlaginationHomePage';
 
 const refs = {
   searchForm: document.querySelector('#js-form'),
@@ -16,11 +17,14 @@ const refs = {
   cardFilm: document.querySelector('#js-film-card'),
   prevButton: document.querySelector('#js-prev-button'),
   nextButton: document.querySelector('#js-next-button'),
+  paginationBlock: document.querySelector('#js-pagination-wrapper'),
 
   sectionHomePage: document.querySelector('#js-home-page'),
   sectionLibraryPage: document.querySelector('#js-library-page'),
   sectionDetailsPage: document.querySelector('#js-details-page'),
 };
+
+refs.paginationBlock.addEventListener('click', plaginationNavigation);
 
 const baseUrl = 'https://api.themoviedb.org/3/search/movie';
 const popularUrl = 'https://api.themoviedb.org/3/movie/popular';
@@ -39,7 +43,7 @@ let filmTitleth;
 let movieId;
 
 // console.log(index.pageNumber);
-console.log(pageNumber);
+console.log(global.pageNumber);
 
 console.log(refs.sectionFilm); //* ul
 // console.log(refs.cardFilm); //* для картки
@@ -104,17 +108,21 @@ async function fetchPopularMoviesList() {
     // renderFilm(renderFilms);
     console.log(global.renderFilms);
 
-    
-    if (pageNumber >= 1) {
-      // refs.prevButton.classList.add('visually-hidden');
-      refs.prevButton.classList.remove('visually-hidden');
-    } else {
-      // refs.prevButton.classList.remove('visually-hidden');
-      refs.prevButton.classList.add('visually-hidden');
-    }
-    
-    return global.renderFilms;
+    // if (global.pageNumber >= 1) {
+    //   // refs.prevButton.classList.add('visually-hidden');
+    //   refs.prevButton.classList.remove('visually-hidden');
+    // } else {
+    //   // refs.prevButton.classList.remove('visually-hidden');
+    //   refs.prevButton.classList.add('visually-hidden');
+    // }
 
+    if (global.pageNumber <= 1) {
+      refs.prevButton.classList.add('visually-hidden');
+    } else {
+      refs.prevButton.classList.remove('visually-hidden');
+    }
+
+    return global.renderFilms;
   } catch (error) {
     refs.error.classList.remove('visually-hidden');
     return console.warn(error);
@@ -152,7 +160,6 @@ function clearFilmList() {
 
 // let selectFilm = {};
 
-
 // function activeDetailsPage(movieId, itsLibraryFilm) {
 //   refs.sectionDetailsPage.classList.remove('visually-hidden');
 //   refs.sectionHomePage.classList.add('visually-hidden');
@@ -174,7 +181,6 @@ function clearFilmList() {
 
 // selectFilm = renderFilms.find(el => el.id === movieId); // Участник 1
 // }
-
 
 // export { createCardFunc, fetchPopularMoviesList, fetchGenres };
 
