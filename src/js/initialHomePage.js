@@ -38,9 +38,9 @@ let imgPath;
 let filmTitle;
 let movieId;
 
-console.log(global.pageNumber);
+console.log('global.pageNumber: ', global.pageNumber);
 
-console.log(refs.sectionFilm); //* ul
+// console.log(refs.sectionFilm); //* ul
 // console.log(refs.cardFilm); //* для картки
 // console.log(refs.itemFilm); //* null
 
@@ -49,9 +49,9 @@ async function createCardFunc(results) {
   refs.sectionFilm.insertAdjacentHTML('beforeend', markupCard);
   refs.sectionFilm.addEventListener('click', event => {
     if (event.target.nodeName === 'A') {
-      console.log('event.target.id ', event.target.id);
+      // console.log('event.target.id ', event.target.id);
       results.forEach(movie => {
-        if (movie.id === event.target.id) {
+        if (movie.id == event.target.id) {
           console.log('event.target.id ', event.target.id);
           console.log('movie: ', movie);
           return activeDetailsPage(movie, false);
@@ -76,13 +76,14 @@ async function fetchPopularMoviesList() {
     let response = await fetch(popularUrl + requestParams);
     let data = await response.json();
     let results = await data.results;
+    console.log('results initial: ', results);
     if (results.length > 1) {
       clearFilmList();
     }
     createCardFunc(results);
 
     global.renderFilms = results;
-    console.log(global.renderFilms);
+    console.log('global.renderFilms: ', global.renderFilms);
 
     if (global.pageNumber <= 1) {
       refs.prevButton.classList.add('visually-hidden');
