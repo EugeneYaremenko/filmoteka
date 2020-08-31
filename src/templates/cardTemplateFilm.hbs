@@ -1,10 +1,11 @@
 {{!-- {{#each this}} --}}
- <li class="gallery__item js-gallery__item">
+<li class="gallery__item js-gallery__item">
     <div class="photo-card js-photo-card">
         <a class="photo-card__link js-photo-card__link" href="#">
             <img class="photo-card__image js-photo-card__image"
                 src="https://image.tmdb.org/t/p/w500{{poster_path}}"
-                data-source="{{backdrop_path}}" alt="{{original_title}}" />
+                data-source="https://image.tmdb.org/t/p/w500{{backdrop_path}}"
+                alt="{{original_title}}" />
         </a>
         <div class="stats">
             <p class="stats-item">Title: {{title}}</p>

@@ -3,7 +3,7 @@ import './js/initialHomePage';
 // import './js/services/pixabayAsync-services';
 import './js/buttonScrollTop';
 import './js/searchAndPlaginationHomePage';
-import './js/navigation';
+// import './js/navigation';
 import './js/filmDetailsPage';
 import './js/libraryPage';
 
