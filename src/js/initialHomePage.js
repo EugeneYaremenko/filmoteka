@@ -3,6 +3,8 @@
 import cardTemplate from '../templates/cardFilm.hbs';
 import cardTemplateFilm from '../templates/cardTemplateFilm.hbs';
 // import searchAndPlaginationHomePage from './searchAndPlaginationHomePage';
+import navigation from './navigation';
+import global from './constants';
 // import {activeDetailsPage} from './navigation';
 
 const refs = {
@@ -25,8 +27,8 @@ const key = '0e322ad2a3bf93179a3983749fdc0c73';
 const languageEn = 'en-US';
 const languageUa = 'ua';
 
-let pageNumber = 1;
-let renderFilms = [];
+// let pageNumber = 1;
+// let renderFilms = [];
 let genres;
 
 let imgPath;
@@ -79,8 +81,9 @@ return a + b;
   // return (refs.itemFilm, imgPath, filmTitle, movieId);
 }
 
-async function fetchPopularMoviesList(pageNumber) {
-  const requestParams = `?api_key=${key}&language=${languageEn}&page=${pageNumber}`;
+// async function fetchPopularMoviesList(pageNumber) {
+async function fetchPopularMoviesList() {
+  const requestParams = `?api_key=${key}&language=${languageEn}&page=${global.pageNumber}`;
 
   try {
     let response = await fetch(popularUrl + requestParams);
@@ -92,13 +95,13 @@ async function fetchPopularMoviesList(pageNumber) {
     }
 
     createCardFunc(results);
-    // createCardFunc(renderFilms);
 
-    renderFilms = results;
+    global.renderFilms = results;
     // renderFilm(renderFilms);
-    console.log(renderFilms);
+    console.log(global.renderFilms);
 
-    return renderFilms;
+    return global.renderFilms;
+
   } catch (error) {
     refs.error.classList.remove('visually-hidden');
     return console.warn(error);
@@ -135,6 +138,47 @@ function clearFilmList() {
 }
 
 // let selectFilm = {};
+
+
+// function activeDetailsPage(movieId, itsLibraryFilm) {
+//   refs.sectionDetailsPage.classList.remove('visually-hidden');
+//   refs.sectionHomePage.classList.add('visually-hidden');
+//   refs.sectionLibraryPage.classList.add('visually-hidden');
+
+//   console.log(renderFilms);
+
+//   const rendFilm = renderFilms.find(el => el.id === movieId);
+//   console.log(rendFilm);
+
+// if (itsLibraryFilm) {
+//   let queueFilmList = [
+//     ...JSON.parse(localStorage.getItem('filmsQueue')),
+//     ...JSON.parse(localStorage.getItem('filmsWatched')),
+//   ];
+
+//   selectFilm = queueFilmList.find(el => el.id === movieId);
+// }
+
+// selectFilm = renderFilms.find(el => el.id === movieId); // Участник 1
+// }
+
+// function renderFilm(films) {
+// console.log(films); //* (20) [{…}, {…}, ... {…}, {…}]
+// console.log(films[0]); //* {popularity: 614.082, vote_count: 869, video: false, poster_path: "/TnOeov4w0sTtV2gqICqIxVi74V.jpg", id: 605116, …}
+// console.log(films[0].title); //* Project Power
+// console.log(films[0].vote_average); //* Project Power
+// console.log(films[0].popularity); //* 6.7
+// console.log(films[0].id); //* 614.082
+// console.log(films[0].genre_ids); //* (3) [28, 80, 878]
+// console.log(films[0].overview); //* About
+// console.log(films[0].backdrop_path); //* мала фотка на список
+// console.log(films[0].poster_path); //* велика фотка на картку
+//   fetchGenres();
+//   const cardImage = films.map(film => cardTemplateFilm(film)).join('');
+//   refs.cardFilm.insertAdjacentHTML('beforeend', cardImage);
+// }
+export { createCardFunc, fetchPopularMoviesList };
+export { createCardFunc, fetchPopularMoviesList, fetchGenres };
 
 function activeDetailsPage(movieId, itsLibraryFilm) {
   refs.sectionDetailsPage.classList.remove('visually-hidden');
