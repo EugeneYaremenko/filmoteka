@@ -4,6 +4,7 @@ import cardTemplate from '../templates/cardFilm.hbs';
 import cardTemplateFilm from '../templates/cardTemplateFilm.hbs';
 // import searchAndPlaginationHomePage from './searchAndPlaginationHomePage';
 import navigation from './navigation';
+import { activeDetailsPage } from './navigation';
 import global from './constants';
 // import {activeDetailsPage} from './navigation';
 // import index from '../index';
@@ -37,7 +38,6 @@ const languageUa = 'ua';
 // let pageNumber = 1;
 // let renderFilms = [];
 let genres;
-
 let imgPath;
 let filmTitleth;
 let movieId;
@@ -50,12 +50,29 @@ console.log(refs.sectionFilm); //* ul
 // console.log(refs.itemFilm); //* null
 // console.log(genres);
 
-async function createCardFunc(imgPath, filmTitle, movieId) {
+async function createCardFunc(results) {
+  const markupCard = await cardTemplate(results);
+  refs.sectionFilm.insertAdjacentHTML('beforeend', markupCard);
+  refs.sectionFilm.addEventListener('click', event => {
+    if (event.target.nodeName === 'A') {
+      console.log('event.target.id ', event.target.id);
+      results.forEach(movie => {
+        if (movie.id == event.target.id) {
+          console.log('event.target.id ', event.target.id);
+          console.log('movie: ', movie);
+          return activeDetailsPage(movie, false);
+        }
+      });
+    }
+    return;
+  });
+
+// async function createCardFunc(imgPath, filmTitle, movieId) {
   // async function createCardFunc(renderFilms) {
 
   // const markupCard = await cardTemplate(renderFilms);
-  const markupCard = await cardTemplate(imgPath, filmTitle, movieId);
-  refs.sectionFilm.insertAdjacentHTML('beforeend', markupCard);
+//   const markupCard = await cardTemplate(imgPath, filmTitle, movieId);
+//   refs.sectionFilm.insertAdjacentHTML('beforeend', markupCard);
 
   // const markupFilm = renderFilms.map(function (movie) {
   // const markupFilm = renderFilms.forEach(function (movie) {
@@ -79,30 +96,43 @@ async function createCardFunc(imgPath, filmTitle, movieId) {
   // refs.sectionFilm.insertAdjacentHTML('beforeend', markupCard);
   // refs.sectionFilm.insertAdjacentHTML('beforeend', cardTemplate(markupFilm));
 
-  refs.sectionFilm.addEventListener('click', event => {
-    console.log(event.target.offsetParent);
-    console.log(movieId);
+//   refs.sectionFilm.addEventListener('click', event => {
+//     console.log(event.target.offsetParent);
+//     console.log(movieId);
 
-    return activeDetailsPage(movieId, false);
-  });
-  return refs.itemFilm;
+//     return activeDetailsPage(movieId, false);
+//   });
+//   return refs.itemFilm;
   // return (refs.itemFilm, imgPath, filmTitle, movieId);
-}
+// }
 
-// async function fetchPopularMoviesList(pageNumber) {
+// function createCardFunc(movie) {
+//   refs.sectionFilm.addEventListener('click', event => {
+//     console.log(event.target.offsetParent);
+//     console.log('movie initial: ', movie);
+//     return activeDetailsPage(movie, false);
+//   });
+// }
+
 async function fetchPopularMoviesList() {
-  const requestParams = `?api_key=${key}&language=${languageEn}&page=${global.pageNumber}`;
 
+//   const requestParams = `?api_key=${key}&language=${languageEn}&page=${pageNumber}`;
+  const requestParams = `?api_key=${key}&language=${languageEn}&page=${global.pageNumber}`;
+  
   try {
     let response = await fetch(popularUrl + requestParams);
     let data = await response.json();
     let results = await data.results;
-
-    if (results.length > 1) {
+   if (results.length > 1) {
       clearFilmList();
     }
-
     createCardFunc(results);
+
+//     renderFilms = results;
+    // renderFilm(renderFilms);
+    // console.log('renderFilms initial: ', renderFilms);
+//     return renderFilms;
+
 
     global.renderFilms = results;
     // renderFilm(renderFilms);
@@ -123,10 +153,29 @@ async function fetchPopularMoviesList() {
     }
 
     return global.renderFilms;
+
   } catch (error) {
     refs.error.classList.remove('visually-hidden');
     return console.warn(error);
   }
+}
+
+function renderFilm(films) {
+  // console.log(films); //* (20) [{…}, {…}, ... {…}, {…}]
+  // console.log(films[0]); //* {popularity: 614.082, vote_count: 869, video: false, poster_path: "/TnOeov4w0sTtV2gqICqIxVi74V.jpg", id: 605116, …}
+  // console.log(films[0].title); //* Project Power
+  // console.log(films[0].vote_average); //* Project Power
+  // console.log(films[0].popularity); //* 6.7
+  // console.log(films[0].id); //* 614.082
+  // console.log(films[0].genre_ids); //* (3) [28, 80, 878]
+  // console.log(films[0].overview); //* About
+  // console.log(films[0].backdrop_path); //* мала фотка на список
+  // console.log(films[0].poster_path); //* велика фотка на картку
+  // fetchGenres();
+  refs.cardFilm.classList.add('visually-hidden');
+  const cardImage = films.map(film => cardTemplateFilm(film)).join('');
+  // console.log('cardImage initial:', cardImage);
+  refs.cardFilm.insertAdjacentHTML('beforeend', cardImage);
 }
 
 function fetchGenres() {
@@ -139,9 +188,7 @@ function fetchGenres() {
       // console.log(data.genres[0].id); //* 28
       // console.log(data.genres[0].name); //* Action
       genres = data.genres;
-
-      console.log(genres);
-
+      // console.log('genres initial: ', genres);
       return genres;
     })
     .catch(error => {
@@ -157,6 +204,10 @@ fetchGenres();
 function clearFilmList() {
   refs.sectionFilm.innerHTML = '';
 }
+
+
+
+export { renderFilms };
 
 // let selectFilm = {};
 
@@ -221,3 +272,4 @@ export { createCardFunc, fetchPopularMoviesList, fetchGenres };
 //! Звідки
 //* В самому низу файла, перелік тих функцій, які потрібно експортувати:
 //? export { noticeError, mySuccess };
+

@@ -1,3 +1,7 @@
+
+import { renderFilms } from './initialHomePage';
+import { showDetails, toggleToQueue, toggleToWatched } from './filmDetailsPage';
+
 import { drawQueueFilmList, drawWatchedFilmList } from './libraryPage';
 import { plaginationNavigation } from './searchAndPlaginationHomePage';
 
@@ -17,8 +21,8 @@ const refs = {
     '#js-navigation-library-btn-watched',
   ),
 
-  addQueueButton: document.querySelector('#js-add-queue-button'),
-  addWatchedButton: document.querySelector('#js-add-watched-button'),
+  addQueueButton: document.querySelector('#js-addQueueButton'),
+  addWatchedButton: document.querySelector('#js-addWatchedButton'),
 
   prevButton: document.querySelector('#js-prev-button'),
   nextButton: document.querySelector('#js-next-button'),
@@ -52,13 +56,10 @@ function activeLibraryPage() {
   refs.sectionLibraryPage.classList.remove('visually-hidden');
   refs.sectionHomePage.classList.add('visually-hidden');
   refs.sectionDetailsPage.classList.add('visually-hidden');
-
   drawQueueFilmList();
   refs.buttonLibraryQueue.classList.add('main__navigation-library-btn-active'); // Участник 5
-
   refs.buttonLibraryQueue.addEventListener('click', drawQueueFilmList); // Участник 5
   refs.buttonLibraryWatched.addEventListener('click', drawWatchedFilmList);
-
   refs.addQueueButton.removeEventListener('click', toggleToQueue); // Участник 4
   refs.addWatchedButton.removeEventListener('click', toggleToWatched);
 
@@ -68,20 +69,34 @@ function activeLibraryPage() {
 
 let selectFilm = {};
 
-function activeDetailsPage(movieId, itsLibraryFilm) {
+function activeDetailsPage(movie, itsLibraryFilm) {
   refs.sectionDetailsPage.classList.remove('visually-hidden');
   refs.sectionHomePage.classList.add('visually-hidden');
   refs.sectionLibraryPage.classList.add('visually-hidden');
+
+  // console.log(renderFilms);
+  // console.log(renderFilms.id);
+  // const rendFilm = rendFilm.find(function (el) {
+  //   console.log(el.id);
+  //   console.log(movieId);
+  //   return el.id === movieId;
+  // });
+  // console.log(rendFilm);
+  // return rendFilm;
+  // }
 
   if (itsLibraryFilm) {
     let queueFilmList = [
       ...JSON.parse(localStorage.getItem('filmsQueue')),
       ...JSON.parse(localStorage.getItem('filmsWatched')),
     ];
-    selectFilm = queueFilmList.find(el => el.id === movieId);
+    selectFilm = queueFilmList.find(el => el.id === movie.id);
   }
-
-  selectFilm = renderFilms.find(el => el.id === movieId); // Участник 1
+  // console.log('movie navigation: ', movie);
+  // console.log('movie.id navigation: ', movie.id);
+  // console.log('renderFilms navigation: ', renderFilms);
+  selectFilm = renderFilms.find(el => el.id === movie.id); // Участник 1
+  // console.log('selectFilm navigation: ', selectFilm);
   showDetails(selectFilm);
   refs.addQueueButton.addEventListener('click', toggleToQueue); // Участник 4
   refs.addWatchedButton.addEventListener('click', toggleToWatched);
@@ -90,8 +105,8 @@ function activeDetailsPage(movieId, itsLibraryFilm) {
 refs.buttonLibraryQueue.removeEventListener('click', drawQueueFilmList); // Участник 5
 refs.buttonLibraryWatched.removeEventListener('click', drawWatchedFilmList);
 
-export { activeDetailsPage,  };
-
 refs.prevButton.removeEventListener('click', plaginationNavigation); // Участник 2
 refs.nextButton.removeEventListener('click', plaginationNavigation);
+
+export { activeDetailsPage, selectFilm };
 
