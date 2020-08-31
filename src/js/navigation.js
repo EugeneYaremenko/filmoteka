@@ -68,6 +68,8 @@ function activeLibraryPage() {
 
 let selectFilm = {};
 
+
+
 function activeDetailsPage(movieId, itsLibraryFilm) {
   refs.sectionDetailsPage.classList.remove('visually-hidden');
   refs.sectionHomePage.classList.add('visually-hidden');
