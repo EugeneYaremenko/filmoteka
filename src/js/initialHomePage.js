@@ -6,7 +6,7 @@ import cardTemplateFilm from '../templates/cardTemplateFilm.hbs';
 import navigation from './navigation';
 import global from './constants';
 // import {activeDetailsPage} from './navigation';
-import index from '../index';
+// import index from '../index';
 
 const refs = {
   searchForm: document.querySelector('#js-form'),
@@ -56,9 +56,9 @@ async function createCardFunc(imgPath, filmTitle, movieId) {
   // const markupFilm = renderFilms.map(function (movie) {
   // const markupFilm = renderFilms.forEach(function (movie) {
 
-  function name(a, b) {
-    return a + b;
-  }
+  // function name(a, b) {
+  //   return a + b;
+  // }
   // console.log(movie);
 
   //   imgPath = movie.backdrop_path;
@@ -175,23 +175,8 @@ function clearFilmList() {
 // selectFilm = renderFilms.find(el => el.id === movieId); // Участник 1
 // }
 
-// function renderFilm(films) {
-// console.log(films); //* (20) [{…}, {…}, ... {…}, {…}]
-// console.log(films[0]); //* {popularity: 614.082, vote_count: 869, video: false, poster_path: "/TnOeov4w0sTtV2gqICqIxVi74V.jpg", id: 605116, …}
-// console.log(films[0].title); //* Project Power
-// console.log(films[0].vote_average); //* Project Power
-// console.log(films[0].popularity); //* 6.7
-// console.log(films[0].id); //* 614.082
-// console.log(films[0].genre_ids); //* (3) [28, 80, 878]
-// console.log(films[0].overview); //* About
-// console.log(films[0].backdrop_path); //* мала фотка на список
-// console.log(films[0].poster_path); //* велика фотка на картку
-//   fetchGenres();
-//   const cardImage = films.map(film => cardTemplateFilm(film)).join('');
-//   refs.cardFilm.insertAdjacentHTML('beforeend', cardImage);
-// }
-export { createCardFunc, fetchPopularMoviesList };
-export { createCardFunc, fetchPopularMoviesList, fetchGenres };
+
+// export { createCardFunc, fetchPopularMoviesList, fetchGenres };
 
 function activeDetailsPage(movieId, itsLibraryFilm) {
   refs.sectionDetailsPage.classList.remove('visually-hidden');
