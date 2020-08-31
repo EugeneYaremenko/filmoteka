@@ -4,7 +4,7 @@ import './js/initialHomePage';
 import './js/buttonScrollTop';
 import './js/navigation';
 import './js/searchAndPlaginationHomePage';
-import './js/navigation';
+// import './js/navigation';
 import './js/filmDetailsPage';
 import './js/libraryPage';
 

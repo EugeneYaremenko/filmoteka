@@ -4,6 +4,7 @@ import global from './constants';
 // let inputValue;
 // let pageNumber = 1;
 // let renderFilms;
+
 const baseUrl = 'https://api.themoviedb.org/3/search/movie';
 
 const refs = {
@@ -62,7 +63,7 @@ function fetchFilms(inputValue) {
 //   refs.filmList.insertAdjacentHTML('beforeend', markupGallery);
 // }
 
-function plaginationNavigation(e) {
+export function plaginationNavigation(e) {
   event.preventDefault();
 
   if (event.target.nodeName == 'BUTTON') {
