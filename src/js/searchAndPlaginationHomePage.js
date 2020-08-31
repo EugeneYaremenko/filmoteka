@@ -1,5 +1,6 @@
 import cardTemplate from '../templates/cardFilm.hbs';
 import { createCardFunc, fetchPopularMoviesList } from './initialHomePage';
+
 import global from './constants';
 // let inputValue;
 // let pageNumber = 1;
