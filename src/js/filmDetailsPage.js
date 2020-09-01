@@ -1,8 +1,12 @@
 // Участник №04
 
 import { selectFilm } from './navigation';
+import global from './constants';
+import cardTemplateFilm from '../templates/cardTemplateFilm.hbs';
 
 const refs = {
+  detailsPage: document.querySelector('#js-details-page-wrapper'),
+
   mainImg: document.querySelector('#js-mainImg'),
   descriptionTitle: document.querySelector('#js-descriptionTitle'),
   tableVote: document.querySelector('.js-tableVote'),
@@ -106,18 +110,23 @@ function toggleToWatched() {
   monitorButtonStatusText();
 }
 
-function showDetails(selectFilm) {
-  // console.log('selectFilm showDetails: ', selectFilm);
-  refs.mainImg.setAttribute(
-    'src',
-    `https://image.tmdb.org/t/p/w500/${selectFilm.poster_path}`,
-  );
-  refs.descriptionTitle.textContent = selectFilm.title;
-  refs.tableVote.textContent = `${selectFilm.vote_average} / ${selectFilm.vote_count}`;
-  refs.tablePopularity.textContent = selectFilm.popularity;
-  refs.tableOriginalTitle.textContent = selectFilm.original_title;
-  refs.tableGenre.textContent = selectFilm.genre_ids;
-  refs.descriptionAboutInfo.textContent = selectFilm.overview;
+async function showDetails(selectFilm) {
+  console.log('selectFilm showDetails: ', global.selectFilm);
+  // refs.mainImg.setAttribute(
+  //   'src',
+  //   `https://image.tmdb.org/t/p/w500/${selectFilm.poster_path}`,
+  // );
+  // refs.descriptionTitle.textContent = selectFilm.title;
+  // refs.tableVote.textContent = `${selectFilm.vote_average} / ${selectFilm.vote_count}`;
+  // refs.tablePopularity.textContent = selectFilm.popularity;
+  // refs.tableOriginalTitle.textContent = selectFilm.original_title;
+  // refs.tableGenre.textContent = selectFilm.genre_ids;
+  // refs.descriptionAboutInfo.textContent = selectFilm.overview;
+
+  const markupFilm = await cardTemplateFilm(selectFilm);
+  refs.detailsPage.insertAdjacentHTML('afterbegin', markupFilm);
+  // refs.detailsPage.insertAdjacentHTML('beforeend', markupFilm);
+
   monitorButtonStatusText();
 }
 

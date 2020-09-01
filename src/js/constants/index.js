@@ -3,5 +3,6 @@ export default global = {
   pageNumber: 1,
   renderFilms: [],
   genres: {},
-  // selectFilm: {},
+  selectFilm: {},
+  movieId: 0,
 };
