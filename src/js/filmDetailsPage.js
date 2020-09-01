@@ -1,6 +1,8 @@
 // Участник №04
 
-import { selectFilm } from './navigation';
+import global from './constants';
+
+// import { selectFilm } from './navigation';
 
 const refs = {
   mainImg: document.querySelector('#js-mainImg'),
@@ -17,8 +19,6 @@ const refs = {
 function monitorButtonStatusText() {
   let filmsFromQueueLS = localStorage.getItem('filmsQueue');
   let filmsFromWatchedLS = localStorage.getItem('filmsWatched');
-
-  // console.log('filmsFromQueueLS in BUTTON STATUS: ', filmsFromQueueLS);
 
   if (filmsFromQueueLS !== null) {
     JSON.parse(filmsFromQueueLS).find(ar => ar.id === selectFilm.id)
@@ -39,69 +39,44 @@ let arrW = [];
 function toggleToQueue() {
   const filmsQueueLS = JSON.parse(localStorage.getItem('filmsQueue'));
   if (filmsQueueLS === null) {
-    arrQ.push(selectFilm);
+    arrQ.push(global.selectFilm);
     localStorage.setItem('filmsQueue', JSON.stringify(arrQ));
     monitorButtonStatusText();
     return;
   }
-  if (filmsQueueLS !== null && arrQ.includes(selectFilm)) {
+  if (filmsQueueLS !== null && arrQ.includes(global.selectFilm)) {
     let arrQ2 = arrQ.filter(ar => {
-      return ar.id !== selectFilm.id;
+      return ar.id !== global.selectFilm.id;
     });
     localStorage.setItem('filmsQueue', JSON.stringify(arrQ2));
     arrQ = arrQ2;
     monitorButtonStatusText();
     return;
   }
-  arrQ.push(selectFilm);
+  arrQ.push(global.selectFilm);
   localStorage.setItem('filmsQueue', JSON.stringify(arrQ));
   monitorButtonStatusText();
 }
-
-// function toggleToQueue() {
-//   let filmsQueueLS = JSON.parse(localStorage.getItem('filmsQueue'));
-//   if (filmsQueueLS !== null) {
-//     let arFind = arrQ.find(function (ar, selectFilm) {
-//       return ar.id === selectFilm.id;
-//     });
-//     console.log('arFind: ', arFind);
-//     if (arFind) {
-//       let arrFilter = arrQ.filter(ar => ar.id !== selectFilm.id);
-//       localStorage.setItem('filmsQueue', JSON.stringify(arrFilter));
-//       return;
-//     }
-//     arrQ.push(selectFilm);
-//     console.log('arrQ if !== null: ', arrQ);
-//     localStorage.setItem('filmsQueue', JSON.stringify(arrQ));
-//     monitorButtonStatusText();
-//     return;
-//   }
-//   console.log('selectFilm: ', selectFilm);
-//   arrQ.push(selectFilm);
-//   console.log('arrQ after push selectFilm: ', arrQ);
-//   localStorage.setItem('filmsQueue', JSON.stringify(arrQ));
-//   monitorButtonStatusText();
-// }
 
 function toggleToWatched() {
   const filmsWatchedLS = JSON.parse(localStorage.getItem('filmsWatched'));
   console.log('filmsWatchedLS BEGIN: ', filmsWatchedLS);
   if (filmsWatchedLS === null) {
-    arrW.push(selectFilm);
+    arrW.push(global.selectFilm);
     localStorage.setItem('filmsWatched', JSON.stringify(arrW));
     monitorButtonStatusText();
     return;
   }
-  if (filmsWatchedLS !== null && arrW.includes(selectFilm)) {
+  if (filmsWatchedLS !== null && arrW.includes(global.selectFilm)) {
     let arrW2 = arrW.filter(ar => {
-      return ar.id !== selectFilm.id;
+      return ar.id !== global.selectFilm.id;
     });
     localStorage.setItem('filmsWatched', JSON.stringify(arrW2));
     arrW = arrW2;
     monitorButtonStatusText();
     return;
   }
-  arrW.push(selectFilm);
+  arrW.push(global.selectFilm);
   localStorage.setItem('filmsWatched', JSON.stringify(arrW));
   monitorButtonStatusText();
 }
