@@ -1,28 +1,12 @@
 // Участник №04
 
-// - пишем функцию monitorButtonStatusText которая следит за состоянием (значок и текст в кнопке),
-// читает  local storage по ключу filmsQueue и  filmsWatched и меняет текст и значки в кнопках: Delete from queue / Add to queue;
-// Delete from watched / Add to watched.
-
-// - пишем функцию toggleToQueue (будет добавлять или удалять фильмы из очереди просмотра),
-// которая создает переменную массива в очереди, читает local storage по ключу filmsQueue, если результат не пустой,
-// то пушит элементы в нашу переменную, ! также функция вплотную работает с глобальной переменной selectFilm,
-// и если selectFilm содержиться в нашей переменной, то убираем его оттуда,
-// иначе добавляем selectFilm в нашу переменную, потом эта функция кладет нашу переменную в local storage,
-// запускает в конце себя функцию monitorButtonStatusText;
-
-// - пишем функцию toggleToWatched (будет добавлять или удалять фильмы из просмотренных), суть ее работы один в один как toggleToQueue,
-// только работает с local storage по ключу filmsWatched.
-
-// - пишем функцию showDetails которая принимает параметром selectFilm (глобальная переменная - объект, которая создана в задаче номер три)
-// и рендерит всю разметку согласно макета, в этой функции запускается функция monitorButtonStatusText.
-
-// * из DOM достукивается до нужных кнопок участник 3 и вешает функции  toggleToQueue и toggleToWatched слушателями на страницу деталей
-// и удаляет там где не нужно.
-
+import { selectFilm } from './navigation';
 import global from './constants';
+import cardTemplateFilm from '../templates/cardTemplateFilm.hbs';
 
 const refs = {
+  detailsPage: document.querySelector('#js-details-page-wrapper'),
+
   mainImg: document.querySelector('#js-mainImg'),
   descriptionTitle: document.querySelector('#js-descriptionTitle'),
   tableVote: document.querySelector('.js-tableVote'),
@@ -38,67 +22,111 @@ function monitorButtonStatusText() {
   let filmsFromQueueLS = localStorage.getItem('filmsQueue');
   let filmsFromWatchedLS = localStorage.getItem('filmsWatched');
 
-  console.log('filmsFromQueueLS: ', filmsFromQueueLS);
+  // console.log('filmsFromQueueLS in BUTTON STATUS: ', filmsFromQueueLS);
 
   if (filmsFromQueueLS !== null) {
-    JSON.parse(filmsFromQueueLS).find(ar => ar.id === global.selectFilm.id)
+    JSON.parse(filmsFromQueueLS).find(ar => ar.id === selectFilm.id)
       ? (refs.addQueueButton.textContent = 'Delete from queue')
       : (refs.addQueueButton.textContent = 'Add to queue');
   } else refs.addQueueButton.textContent = 'Add to queue';
 
   if (filmsFromWatchedLS !== null) {
-    JSON.parse(filmsFromWatchedLS).find(ar => ar.id === global.selectFilm.id)
+    JSON.parse(filmsFromWatchedLS).find(ar => ar.id === selectFilm.id)
       ? (refs.addWatchedButton.textContent = 'Delete from watched')
       : (refs.addWatchedButton.textContent = 'Add to watched');
   } else refs.addWatchedButton.textContent = 'Add to watched';
 }
 
+let arrQ = [];
+let arrW = [];
+
 function toggleToQueue() {
-  let arr = [];
-  let arrNew = [];
-  let filmsQueueLS = localStorage.getItem('filmsQueue');
-  if (filmsQueueLS !== null) {
-    arr.push(JSON.parse(filmsQueueLS));
+  const filmsQueueLS = JSON.parse(localStorage.getItem('filmsQueue'));
+  if (filmsQueueLS === null) {
+    arrQ.push(selectFilm);
+    localStorage.setItem('filmsQueue', JSON.stringify(arrQ));
+    monitorButtonStatusText();
+    return;
   }
-  if (arr.find(ar => ar.id === global.selectFilm.id)) {
-    arrNew = arr.filter(ar => ar.id !== global.selectFilm.id);
+  if (filmsQueueLS !== null && arrQ.includes(selectFilm)) {
+    let arrQ2 = arrQ.filter(ar => {
+      return ar.id !== selectFilm.id;
+    });
+    localStorage.setItem('filmsQueue', JSON.stringify(arrQ2));
+    arrQ = arrQ2;
+    monitorButtonStatusText();
+    return;
   }
-  arrNew.push(global.selectFilm);
-  localStorage.setItem('filmsQueue', JSON.stringify(arrNew));
-  localStorage.setItem('filmsQueue', JSON.stringify(arr));
+  arrQ.push(selectFilm);
+  localStorage.setItem('filmsQueue', JSON.stringify(arrQ));
   monitorButtonStatusText();
 }
+
+// function toggleToQueue() {
+//   let filmsQueueLS = JSON.parse(localStorage.getItem('filmsQueue'));
+//   if (filmsQueueLS !== null) {
+//     let arFind = arrQ.find(function (ar, selectFilm) {
+//       return ar.id === selectFilm.id;
+//     });
+//     console.log('arFind: ', arFind);
+//     if (arFind) {
+//       let arrFilter = arrQ.filter(ar => ar.id !== selectFilm.id);
+//       localStorage.setItem('filmsQueue', JSON.stringify(arrFilter));
+//       return;
+//     }
+//     arrQ.push(selectFilm);
+//     console.log('arrQ if !== null: ', arrQ);
+//     localStorage.setItem('filmsQueue', JSON.stringify(arrQ));
+//     monitorButtonStatusText();
+//     return;
+//   }
+//   console.log('selectFilm: ', selectFilm);
+//   arrQ.push(selectFilm);
+//   console.log('arrQ after push selectFilm: ', arrQ);
+//   localStorage.setItem('filmsQueue', JSON.stringify(arrQ));
+//   monitorButtonStatusText();
+// }
 
 function toggleToWatched() {
-  let arr = [];
-  let arrNew = [];
-  const filmsWatchedLS = localStorage.getItem('filmsWatched');
-  if (filmsWatchedLS !== null) {
-    arr.push(JSON.parse(filmsWatchedLS));
+  const filmsWatchedLS = JSON.parse(localStorage.getItem('filmsWatched'));
+  console.log('filmsWatchedLS BEGIN: ', filmsWatchedLS);
+  if (filmsWatchedLS === null) {
+    arrW.push(selectFilm);
+    localStorage.setItem('filmsWatched', JSON.stringify(arrW));
+    monitorButtonStatusText();
+    return;
   }
-  if (arr.find(ar => ar.id === global.selectFilm.id)) {
-    arrNew = arr.filter(ar => ar.id !== global.selectFilm.id);
+  if (filmsWatchedLS !== null && arrW.includes(selectFilm)) {
+    let arrW2 = arrW.filter(ar => {
+      return ar.id !== selectFilm.id;
+    });
+    localStorage.setItem('filmsWatched', JSON.stringify(arrW2));
+    arrW = arrW2;
+    monitorButtonStatusText();
+    return;
   }
-  arrNew.push(global.selectFilm);
-  localStorage.setItem('filmsWatched', JSON.stringify(arrNew));
-  localStorage.setItem('filmsWatched', JSON.stringify(arr));
+  arrW.push(selectFilm);
+  localStorage.setItem('filmsWatched', JSON.stringify(arrW));
   monitorButtonStatusText();
 }
 
-function showDetails(selectFilm) {
-  console.log('selectFilm showDetails: ', selectFilm);
-  refs.mainImg.setAttribute(
-    'src',
-    `https://image.tmdb.org/t/p/w500/${selectFilm.poster_path}`,
-  );
-  refs.descriptionTitle.textContent = selectFilm.title;
-  refs.tableVote.textContent = `${selectFilm.vote_average} / ${selectFilm.vote_count}`;
-  refs.tablePopularity.textContent = selectFilm.popularity;
-  refs.tableOriginalTitle.textContent = selectFilm.original_title;
-  // refs.tableGenre.textContent = `${selectFilm.genre_ids.name}`;
-  refs.tableGenre.textContent = selectFilm.genre_ids;
-  // console.log('selectFilm[selectFilm.genre_ids]: ', selectFilm[this.genre_ids]);
-  refs.descriptionAboutInfo.textContent = selectFilm.overview;
+async function showDetails(selectFilm) {
+  console.log('selectFilm showDetails: ', global.selectFilm);
+  // refs.mainImg.setAttribute(
+  //   'src',
+  //   `https://image.tmdb.org/t/p/w500/${selectFilm.poster_path}`,
+  // );
+  // refs.descriptionTitle.textContent = selectFilm.title;
+  // refs.tableVote.textContent = `${selectFilm.vote_average} / ${selectFilm.vote_count}`;
+  // refs.tablePopularity.textContent = selectFilm.popularity;
+  // refs.tableOriginalTitle.textContent = selectFilm.original_title;
+  // refs.tableGenre.textContent = selectFilm.genre_ids;
+  // refs.descriptionAboutInfo.textContent = selectFilm.overview;
+
+  const markupFilm = await cardTemplateFilm(selectFilm);
+  refs.detailsPage.insertAdjacentHTML('afterbegin', markupFilm);
+  // refs.detailsPage.insertAdjacentHTML('beforeend', markupFilm);
+
   monitorButtonStatusText();
 }
 

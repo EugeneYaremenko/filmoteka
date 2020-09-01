@@ -39,7 +39,7 @@ let imgPath;
 let filmTitle;
 let movieId;
 
-console.log('global.pageNumber: ', global.pageNumber);
+// console.log('global.pageNumber: ', global.pageNumber);
 
 // console.log(refs.sectionFilm); //* ul
 // console.log(refs.cardFilm); //* для картки
@@ -54,28 +54,26 @@ async function createCardFunc(results) {
 
   refs.sectionFilm.addEventListener('click', event => {
     if (event.target.nodeName === 'A') {
+      console.log('event.target.nodeName ', event.target.nodeName);
+      console.log('event.target.id ', event.target.id);
+
+global.movieId = event.target.id
+global.movieId = Number(global.movieId)
+return activeDetailsPage(movieId, false);
 
 
 
-      // console.log('event.target.id ', event.target.id);
-      results.forEach(movie => {
-        if (movie.id == event.target.id) {
-          console.log('event.target.id ', event.target.id);
-          console.log('movie: ', movie);
-          return activeDetailsPage(movie, false);
-        }
-      });
+      // results.forEach(movie => {
+      //   if (movie.id == event.target.id) {
+      //     // console.log('event.target.id ', event.target.id);
+      //     // console.log('movie: ', movie);
+      //     return activeDetailsPage(movie, false);
+      //   }
+      // });
     }
     return;
   });
 }
-// function createCardFunc(movie) {
-//   refs.sectionFilm.addEventListener('click', event => {
-//     console.log(event.target.offsetParent);
-//     console.log('movie initial: ', movie);
-//     return activeDetailsPage(movie, false);
-//   });
-// }
 
 async function fetchPopularMoviesList() {
   const requestParams = `?api_key=${key}&language=${languageEn}&page=${global.pageNumber}`;
@@ -84,7 +82,7 @@ async function fetchPopularMoviesList() {
     let response = await fetch(popularUrl + requestParams);
     let data = await response.json();
     let results = await data.results;
-    console.log('results initial: ', results);
+    // console.log('results initial: ', results);
     if (results.length > 1) {
       clearFilmList();
     }
