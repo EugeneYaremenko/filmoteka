@@ -22,7 +22,7 @@ function createLibraryCardFunc(imgPath, filmTitle, movieId, voteAverage) {
 
   libraryFilmList.insertAdjacentHTML('afterbegin', createListItem);
 
-  listItem.addEventListener('click', () => activeDetailsPage(movieId, true));
+  libraryFilmList.addEventListener('click', () => activeDetailsPage(movieId, true));
 
   return libraryFilmList;
 }
