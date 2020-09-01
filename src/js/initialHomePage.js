@@ -49,27 +49,14 @@ async function createCardFunc(results) {
   const markupCard = await cardTemplate(results);
   refs.sectionFilm.insertAdjacentHTML('beforeend', markupCard);
 
-
-
-
   refs.sectionFilm.addEventListener('click', event => {
     if (event.target.nodeName === 'A') {
-      console.log('event.target.nodeName ', event.target.nodeName);
-      console.log('event.target.id ', event.target.id);
+      // console.log('event.target.nodeName ', event.target.nodeName);
+      // console.log('event.target.id ', event.target.id);
 
-global.movieId = event.target.id
-global.movieId = Number(global.movieId)
-return activeDetailsPage(movieId, false);
-
-
-
-      // results.forEach(movie => {
-      //   if (movie.id == event.target.id) {
-      //     // console.log('event.target.id ', event.target.id);
-      //     // console.log('movie: ', movie);
-      //     return activeDetailsPage(movie, false);
-      //   }
-      // });
+      global.movieId = event.target.id;
+      global.movieId = Number(global.movieId);
+      return activeDetailsPage(global.movieId, false);
     }
     return;
   });
@@ -116,12 +103,12 @@ function fetchGenres() {
 
       global.genres = data.genres;
 
-      const genresAr = global.genres
+      const genresAr = global.genres;
 
       // createGenres(global.genres)
       console.log('genres initial: ', global.genres);
       // return global.genres;
-      return genresAr
+      return genresAr;
     })
     .catch(error => {
       refs.error.classList.remove('visually-hidden');
@@ -136,12 +123,9 @@ function clearFilmList() {
   refs.sectionFilm.innerHTML = '';
 }
 
-
-
 // async function createGenres(genresAr){
 //   console.log("genresAr: ", genresAr);
-  
-  
+
 //   const markupGenres = await genresFilm(genresAr);
 //   refs.sectionFilm.insertAdjacentHTML('beforeend', markupGenres);
 // }
@@ -154,12 +138,10 @@ function clearFilmList() {
 
 // console.log(endDate);
 
-
 // const variable = Handlebars.registerHelper('reng', function (genre_ids, id, options) {
 // console.log(genresAr.id);
 //   if (genre_ids[i] == id) { return options.fn(this); }
 // });
-
 
 //! var tdGenre = document.querySelector('#js-genre');
 // tdGenre.textContent = String(genres.filter(function (el) {
@@ -169,7 +151,6 @@ function clearFilmList() {
 // }).reduce(function (acc, item) {
 //   return acc + "".concat(item.name, ", ");
 // }, '')).slice(0, -2);
-
 
 export { createCardFunc, fetchPopularMoviesList, fetchGenres };
 
