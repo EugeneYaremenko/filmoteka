@@ -38,7 +38,7 @@ let imgPath;
 let filmTitle;
 let movieId;
 
-console.log('global.pageNumber: ', global.pageNumber);
+// console.log('global.pageNumber: ', global.pageNumber);
 
 // console.log(refs.sectionFilm); //* ul
 // console.log(refs.cardFilm); //* для картки
@@ -52,8 +52,8 @@ async function createCardFunc(results) {
       // console.log('event.target.id ', event.target.id);
       results.forEach(movie => {
         if (movie.id == event.target.id) {
-          console.log('event.target.id ', event.target.id);
-          console.log('movie: ', movie);
+          // console.log('event.target.id ', event.target.id);
+          // console.log('movie: ', movie);
           return activeDetailsPage(movie, false);
         }
       });
@@ -61,13 +61,6 @@ async function createCardFunc(results) {
     return;
   });
 }
-// function createCardFunc(movie) {
-//   refs.sectionFilm.addEventListener('click', event => {
-//     console.log(event.target.offsetParent);
-//     console.log('movie initial: ', movie);
-//     return activeDetailsPage(movie, false);
-//   });
-// }
 
 async function fetchPopularMoviesList() {
   const requestParams = `?api_key=${key}&language=${languageEn}&page=${global.pageNumber}`;
@@ -76,14 +69,14 @@ async function fetchPopularMoviesList() {
     let response = await fetch(popularUrl + requestParams);
     let data = await response.json();
     let results = await data.results;
-    console.log('results initial: ', results);
+    // console.log('results initial: ', results);
     if (results.length > 1) {
       clearFilmList();
     }
     createCardFunc(results);
 
     global.renderFilms = results;
-    console.log('global.renderFilms: ', global.renderFilms);
+    // console.log('global.renderFilms: ', global.renderFilms);
 
     if (global.pageNumber <= 1) {
       refs.prevButton.classList.add('visually-hidden');
