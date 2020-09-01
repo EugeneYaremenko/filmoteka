@@ -25,13 +25,13 @@ function monitorButtonStatusText() {
   // console.log('filmsFromQueueLS in BUTTON STATUS: ', filmsFromQueueLS);
 
   if (filmsFromQueueLS !== null) {
-    JSON.parse(filmsFromQueueLS).find(ar => ar.id === selectFilm.id)
+    JSON.parse(filmsFromQueueLS).find(ar => ar.id === global.selectFilm.id)
       ? (refs.addQueueButton.textContent = 'Delete from queue')
       : (refs.addQueueButton.textContent = 'Add to queue');
   } else refs.addQueueButton.textContent = 'Add to queue';
 
   if (filmsFromWatchedLS !== null) {
-    JSON.parse(filmsFromWatchedLS).find(ar => ar.id === selectFilm.id)
+    JSON.parse(filmsFromWatchedLS).find(ar => ar.id === global.selectFilm.id)
       ? (refs.addWatchedButton.textContent = 'Delete from watched')
       : (refs.addWatchedButton.textContent = 'Add to watched');
   } else refs.addWatchedButton.textContent = 'Add to watched';
