@@ -43,7 +43,8 @@ function fetchFilms(inputValue) {
     .then(response => response.json())
     .then(data => {
       global.renderFilms = data;
-      console.log(global.renderFilms);
+      console.log('global.renderFilms: ', global.renderFilms);
+      console.log('data.results: ', data.results);
       // console.log(global.renderFilms.total_pages);
       if (global.renderFilms.total_results == 0) {
         document.querySelector('#js-error').classList.remove('visually-hidden');
