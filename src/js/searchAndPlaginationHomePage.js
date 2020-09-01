@@ -42,23 +42,37 @@ function fetchFilms(inputValue) {
   fetch(baseUrl + requestParams)
     .then(response => response.json())
     .then(data => {
-      global.renderFilms = data;
-      console.log('global.renderFilms: ', global.renderFilms);
-      console.log('data.results: ', data.results);
+      // global.renderFilms = data;
+      // console.log('global.renderFilms: ', global.renderFilms);
+      // console.log('data.results: ', data.results);
+      
+      
+      global.renderFilms = data.results;
+      // console.log('data.results: ', data.results);
+
+
+
+
       // console.log(global.renderFilms.total_pages);
-      if (global.renderFilms.total_results == 0) {
+      if (global.renderFilms.total_results === 0) {
         document.querySelector('#js-error').classList.remove('visually-hidden');
       } else {
         document.querySelector('#js-error').classList.add('visually-hidden');
         clearFilmList();
-        // insertListItems(data.results);
-        createCardFunc(data.results);
+
+        createCardFunc(global.renderFilms);
       }
       if (global.pageNumber <= 1) {
         refs.prevButton.classList.add('visually-hidden');
       } else {
         refs.prevButton.classList.remove('visually-hidden');
       }
+
+      return global.renderFilms;
+    })
+    .catch(error => {
+      refs.error.classList.remove('visually-hidden');
+      console.warn(error);
     });
 }
 
