@@ -13,6 +13,13 @@
             <p class="stats-item">Popularity: {{popularity}}</p>
             <p class="stats-item">Original title: {{original_title}}</p>
             <p class="stats-item">genre: {{genre_ids}}</p>
+             <ul class="tag-list">
+                {{#each ingredients}}
+                    <li class="tag-list__item">
+                        {{this}}
+                    </li>
+                {{/each}}
+            </ul>
             <p class="stats-item">Date of release: {{release_date}}</p>
             <p class="stats-item">Id: {{id}}</p>
             <p class="stats-item">About: {{overview}}</p>
@@ -20,3 +27,9 @@
     </div>
 </li>
 {{!-- </li> {{/each}} --}}
+
+{{#each ingredients}}
+    <li class="tag-list__item">
+        {{this}}
+    </li>
+{{/each}}

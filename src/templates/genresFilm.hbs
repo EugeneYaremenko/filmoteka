@@ -1,0 +1,31 @@
+
+{{#genre_ids}}
+    {{#../[i]}}
+        {{#reng ../id this.id}}
+            {{this.name}}
+        {{/reng}}
+    {{/../[i]}}
+{{/genre_ids}}
+
+
+
+{{!-- {{#each this}} --}}
+    {{!-- <li class="main__film-item js-film-item">
+        <p class="stats-item">id: {{id}}</p>
+        {{!-- <p class="stats-item">name: {{name}}</p> --}}
+    {{!-- </li> --}} --}}
+{{!-- {{/each}} --}}
+
+  {{!-- <p class="stats-item">genre: {{genre_ids}}</p> --}}
+            {{!-- <ul class="tag-list"> --}}
+                {{!-- {{#each genre_ids}} --}}
+                    {{!-- {{#withItem ../genresAr this}}  --}}
+
+
+                    {{!-- <li class="tag-list__item">
+                        {{this}}
+                    </li> --}}
+
+                    {{!-- {{/withItem}} --}}
+                {{!-- {{/each}} --}}
+            {{!-- </ul> --}}
