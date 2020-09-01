@@ -4,4 +4,5 @@ export default global = {
   renderFilms: [],
   genres: {},
   selectFilm: {},
+  movieId: 0,
 };

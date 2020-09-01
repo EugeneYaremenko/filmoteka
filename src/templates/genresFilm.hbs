@@ -1,0 +1,52 @@
+
+{{#genre_ids}}
+    {{#../[i]}}
+        {{#reng ../id this.id}}
+            {{this.name}}
+        {{/reng}}
+    {{/../[i]}}
+{{/genre_ids}}
+
+
+
+{{!-- {{#each this}} --}}
+    {{!-- <li class="main__film-item js-film-item">
+        <p class="stats-item">id: {{id}}</p>
+        {{!-- <p class="stats-item">name: {{name}}</p> --}}
+    {{!-- </li> --}} --}}
+{{!-- {{/each}} --}}
+
+  {{!-- <p class="stats-item">genre: {{genre_ids}}</p> --}}
+            {{!-- <ul class="tag-list"> --}}
+                {{!-- {{#each genre_ids}} --}}
+                    {{!-- {{#withItem ../genresAr this}}  --}}
+
+
+                    {{!-- <li class="tag-list__item">
+                        {{this}}
+                    </li> --}}
+
+                    {{!-- {{/withItem}} --}}
+                {{!-- {{/each}} --}}
+            {{!-- </ul> --}}
+
+            {{!-- <li class="gallery__item js-gallery__item">
+    <div class="photo-card js-photo-card">
+        <a class="photo-card__link js-photo-card__link" href="#">
+            <img class="photo-card__image js-photo-card__image"
+                src="https://image.tmdb.org/t/p/w500{{poster_path}}"
+                data-source="https://image.tmdb.org/t/p/w500{{backdrop_path}}"
+                alt="{{original_title}}" />
+        {{!-- </a>
+        <div class="stats">
+            <p class="stats-item">Title: {{title}}</p>
+            {{!-- <p class="stats-item">Vote: {{vote_average}}</p> --}}
+            {{!-- <p class="stats-item">Popularity: {{popularity}}</p> --}}
+            {{!-- <p class="stats-item">Original title: {{original_title}}</p> --}}
+            {{!-- <p class="stats-item">genre: {{genre_ids}}</p> --}}
+            {{!-- <p class="stats-item">Date of release: {{release_date}}</p> --}}
+            {{!-- <p class="stats-item">Id: {{id}}</p> --}}
+            {{!-- <p class="stats-item">About: {{overview}}</p> --}}
+        {{!-- </div> --}}
+    {{!-- </div> --}}
+{{!-- </li> --}} --}} --}}

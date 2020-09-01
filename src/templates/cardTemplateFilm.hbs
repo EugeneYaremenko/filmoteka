@@ -1,22 +1,35 @@
-{{!-- {{#each this}} --}}
-<li class="gallery__item js-gallery__item">
-    <div class="photo-card js-photo-card">
-        <a class="photo-card__link js-photo-card__link" href="#">
-            <img class="photo-card__image js-photo-card__image"
-                src="https://image.tmdb.org/t/p/w500{{poster_path}}"
-                data-source="https://image.tmdb.org/t/p/w500{{backdrop_path}}"
-                alt="{{original_title}}" />
-        </a>
-        <div class="stats">
-            <p class="stats-item">Title: {{title}}</p>
-            <p class="stats-item">Vote: {{vote_average}}</p>
-            <p class="stats-item">Popularity: {{popularity}}</p>
-            <p class="stats-item">Original title: {{original_title}}</p>
-            <p class="stats-item">genre: {{genre_ids}}</p>
-            <p class="stats-item">Date of release: {{release_date}}</p>
-            <p class="stats-item">Id: {{id}}</p>
-            <p class="stats-item">About: {{overview}}</p>
-        </div>
-    </div>
-</li>
-{{!-- </li> {{/each}} --}}
+{{!-- <div id="js-details-page-wrapper" class="main__details-page-wrapper"></div> --}}
+
+<div class="main__img-wrapper">
+    <img id="js-mainImg" class="main__img"
+        src="https://image.tmdb.org/t/p/w500{{poster_path}}"
+        data-source="https://image.tmdb.org/t/p/w500{{backdrop_path}}"
+        alt="{{original_title}}" />
+</div>
+<div class="main__description-wrapper">
+    <h2 class="main__description-title" id="js-descriptionTitle">{{title}}</h2>
+    <table class="main__description-table">
+        <tbody class="main__description-table--tbody">
+            <tr class="main__description-table--tr">
+                <td>vote/votes</td>
+                <td class="js-tableVote">{{vote_average}} / {{vote_count}}</td>
+            </tr>
+            <tr class="main__description-table--tr">
+                <td>popularity</td>
+                <td class="js-tablePopularity">{{popularity}}</td>
+            </tr>
+            <tr class="main__description-table--tr">
+                <td>original title</td>
+                <td class="js-tableOriginalTitle">{{original_title}}</td>
+            </tr>
+            <tr class="main__description-table--tr">
+                <td>genre</td>
+                <td class="js-tableGenre">{{genre_ids}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 class="main__description-about">About</h3>
+    <p class="main__description-about--info" id="js-descriptionAboutInfo">{{overview}}</p>
+</div>
+
+{{!-- ( {{release_date}} ) --}}
