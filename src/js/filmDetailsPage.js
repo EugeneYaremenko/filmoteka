@@ -1,19 +1,19 @@
 // Участник №04
 
-import { selectFilm } from './navigation';
+// import { selectFilm } from './navigation';
 import global from './constants';
 import cardTemplateFilm from '../templates/cardTemplateFilm.hbs';
 
 const refs = {
   detailsPage: document.querySelector('#js-details-page-wrapper'),
 
-  mainImg: document.querySelector('#js-mainImg'),
-  descriptionTitle: document.querySelector('#js-descriptionTitle'),
-  tableVote: document.querySelector('.js-tableVote'),
-  tablePopularity: document.querySelector('.js-tablePopularity'),
-  tableOriginalTitle: document.querySelector('.js-tableOriginalTitle'),
+  // mainImg: document.querySelector('#js-mainImg'),
+  // descriptionTitle: document.querySelector('#js-descriptionTitle'),
+  // tableVote: document.querySelector('.js-tableVote'),
+  // tablePopularity: document.querySelector('.js-tablePopularity'),
+  // tableOriginalTitle: document.querySelector('.js-tableOriginalTitle'),
   tableGenre: document.querySelector('.js-tableGenre'),
-  descriptionAboutInfo: document.querySelector('#js-descriptionAboutInfo'),
+  // descriptionAboutInfo: document.querySelector('#js-descriptionAboutInfo'),
   addQueueButton: document.querySelector('#js-addQueueButton'),
   addWatchedButton: document.querySelector('#js-addWatchedButton'),
 };
@@ -23,13 +23,13 @@ function monitorButtonStatusText() {
   let filmsFromWatchedLS = localStorage.getItem('filmsWatched');
 
   if (filmsFromQueueLS !== null) {
-    JSON.parse(filmsFromQueueLS).find(ar => ar.id === selectFilm.id)
+    JSON.parse(filmsFromQueueLS).find(ar => ar.id === global.selectFilm.id)
       ? (refs.addQueueButton.textContent = 'Delete from queue')
       : (refs.addQueueButton.textContent = 'Add to queue');
   } else refs.addQueueButton.textContent = 'Add to queue';
 
   if (filmsFromWatchedLS !== null) {
-    JSON.parse(filmsFromWatchedLS).find(ar => ar.id === selectFilm.id)
+    JSON.parse(filmsFromWatchedLS).find(ar => ar.id === global.selectFilm.id)
       ? (refs.addWatchedButton.textContent = 'Delete from watched')
       : (refs.addWatchedButton.textContent = 'Add to watched');
   } else refs.addWatchedButton.textContent = 'Add to watched';
