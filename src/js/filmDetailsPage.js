@@ -97,6 +97,7 @@ async function showDetails(selectFilm) {
   // refs.descriptionAboutInfo.textContent = selectFilm.overview;
 
   const markupFilm = await cardTemplateFilm(selectFilm);
+  refs.detailsPage.innerHTML = '';
   refs.detailsPage.insertAdjacentHTML('afterbegin', markupFilm);
   // refs.detailsPage.insertAdjacentHTML('beforeend', markupFilm);
 
