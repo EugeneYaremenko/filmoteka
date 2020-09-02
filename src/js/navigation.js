@@ -87,16 +87,14 @@ function activeDetailsPage(movieId, itsLibraryFilm) {
       ...JSON.parse(localStorage.getItem('filmsWatched')),
     ];
 
-    global.selectFilm = queueFilmListlocalStorage.find(el => el.id === global.movieId);
+    global.selectFilm = queueFilmListlocalStorage.find(
+      el => el.id === global.movieId,
+    );
   }
   // console.log('movieId navigation: ', global.movieId);
   // console.log('movie.id navigation: ', movie.id);
   global.selectFilm = global.renderFilms.find(el => el.id === global.movieId); // Участник 1
- 
-    global.selectFilm = queueFilmListlocalStorage.find(el => el.id === movieId);
-  } else {
-    global.selectFilm = global.renderFilms.find(el => el.id === global.movieId);
-  }
+
   // console.log('movieId navigation: ', global.movieId);
   // console.log('movie.id navigation: ', movie.id);
   // console.log('global.renderFilms navigation: ', global.renderFilms);
