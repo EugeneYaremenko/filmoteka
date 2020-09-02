@@ -51,11 +51,9 @@ async function createCardFunc(results) {
 
   refs.sectionFilm.addEventListener('click', event => {
     if (event.target.nodeName === 'A') {
-      // console.log('event.target.nodeName ', event.target.nodeName);
-      // console.log('event.target.id ', event.target.id);
-
-      global.movieId = event.target.id;
-      global.movieId = Number(global.movieId);
+      // console.log('event.target.id from createCardFunc: ', event.target.id);
+      global.movieId = Number(event.target.id);
+      // global.movieId = Number(global.movieId);
       return activeDetailsPage(global.movieId, false);
     }
     return;
@@ -76,7 +74,7 @@ async function fetchPopularMoviesList() {
     createCardFunc(results);
 
     global.renderFilms = results;
-    console.log('global.renderFilms: ', global.renderFilms);
+    // console.log('global.renderFilms: ', global.renderFilms);
 
     if (global.pageNumber <= 1) {
       refs.prevButton.classList.add('visually-hidden');
@@ -106,7 +104,7 @@ function fetchGenres() {
       const genresAr = global.genres;
 
       // createGenres(global.genres)
-      console.log('genres initial: ', global.genres);
+      // console.log('genres initial from fetchGenres: ', global.genres);
       // return global.genres;
       return genresAr;
     })
