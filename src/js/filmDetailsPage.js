@@ -132,9 +132,9 @@ async function showDetails(selectFilm) {
   const tableGenreRef = document.querySelector('#js-table-genre');
   console.log('refs.tableGenreRef:', tableGenreRef);
 
-  // tableGenreRef.textContent = `${genresString}`;
-  // refs.detailsPage.appendChild(tableGenreRef);
-  tableGenreRef.insertAdjacentHTML('beforeend', `${genresString}`); //the same = tableGenreRef.innerHTML(`${genresString}`).trim();
+  tableGenreRef.textContent = `${genresString}`;
+  //the same = tableGenreRef.insertAdjacentHTML('beforeend', `${genresString}`);
+  //the same = tableGenreRef.innerHTML(`${genresString}`).trim();
 
   monitorButtonStatusText();
 }
