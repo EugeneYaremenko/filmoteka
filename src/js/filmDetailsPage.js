@@ -1,6 +1,5 @@
 // Участник №04
 
-// import { selectFilm } from './navigation';
 import global from './constants';
 import cardTemplateFilm from '../templates/cardTemplateFilm.hbs';
 
@@ -12,7 +11,7 @@ const refs = {
   // tableVote: document.querySelector('.js-tableVote'),
   // tablePopularity: document.querySelector('.js-tablePopularity'),
   // tableOriginalTitle: document.querySelector('.js-tableOriginalTitle'),
-  tableGenre: document.querySelector('.js-tableGenre'),
+  // tableGenre: document.querySelector('#js-table-genre'),
   // descriptionAboutInfo: document.querySelector('#js-descriptionAboutInfo'),
   addQueueButton: document.querySelector('#js-addQueueButton'),
   addWatchedButton: document.querySelector('#js-addWatchedButton'),
@@ -84,7 +83,7 @@ function toggleToWatched() {
 }
 
 async function showDetails(selectFilm) {
-  console.log('selectFilm showDetails: ', global.selectFilm);
+  // console.log('selectFilm showDetails: ', global.selectFilm);
   // refs.mainImg.setAttribute(
   //   'src',
   //   `https://image.tmdb.org/t/p/w500/${selectFilm.poster_path}`,
@@ -95,11 +94,36 @@ async function showDetails(selectFilm) {
   // refs.tableOriginalTitle.textContent = selectFilm.original_title;
   // refs.tableGenre.textContent = selectFilm.genre_ids;
   // refs.descriptionAboutInfo.textContent = selectFilm.overview;
+  // console.log('genresString:', genresString, genresString.length);
+
+  // console.log('refs.tableGenre:', refs.tableGenre);
+
+  let allString = '';
+  let genresString = '';
+
+  global.genres.filter(function (el) {
+    return global.selectFilm.genre_ids.find(function (item) {
+      if (item === el.id) {
+        console.log(11111, 'el.name:', el.name);
+        el.name = el.name.toLowerCase();
+        allString += ' '.concat(el.name, ',');
+        genresString = allString.slice(0, -1);
+      }
+    });
+  });
+  // console.log('genresString:', genresString, genresString.length);
+  // console.log('refs.tableGenre:', refs.tableGenre);
+  // console.log('refs.detailsPage:', refs.detailsPage);
 
   const markupFilm = await cardTemplateFilm(selectFilm);
   refs.detailsPage.innerHTML = '';
   refs.detailsPage.insertAdjacentHTML('afterbegin', markupFilm);
-  // refs.detailsPage.insertAdjacentHTML('beforeend', markupFilm);
+
+  const tableGenreRef = document.querySelector('#js-table-genre');
+  console.log('refs.tableGenreRef:', tableGenreRef);
+
+  tableGenreRef.textContent = `${genresString}`;
+  refs.detailsPage.appendChild(tableGenreRef);
 
   monitorButtonStatusText();
 }
