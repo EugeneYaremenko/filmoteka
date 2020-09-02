@@ -1,3 +1,5 @@
+import cardLibraryFilm from '../templates/cardLibraryFilm.hbs';
+
 let buttonLibraryQueue = document.querySelector(
   '#js-navigation-library-btn-queue',
 );
@@ -9,22 +11,23 @@ let buttonLibraryWatched = document.querySelector(
 let libraryFilmList = document.querySelector('#js-library-film-list');
 
 function createLibraryCardFunc(imgPath, filmTitle, movieId, voteAverage) {
-  const createListItem = `<li class="main__film-item js-film-item">
-    <div class="main__film-item-wrapper js-film-item-wrapper">
+  const createLi = document.createElement('li');
+  createLi.classList.add('main__film-item');
+
+  const createLiMarkup = `<div class="main__film-item-wrapper">
       <a class="main__film-link js-film-link">
         <img alt="${filmTitle}" src="https://image.tmdb.org/t/p/w500/${imgPath}" class="main__film-image js-film-image">
       </a>
     </div>
 
     <span class="main__library-film-list-title">${filmTitle}</span>
-    <span class="main__library-film-list-popularity">Popularity: ${voteAverage}</span>
-    </li>`;
+    <span class="main__library-film-list-popularity">Popularity: ${voteAverage}</span>`;
 
-  libraryFilmList.insertAdjacentHTML('afterbegin', createListItem);
+  createLi.insertAdjacentHTML('beforeend', createLiMarkup);
 
-  listItem.addEventListener('click', () => activeDetailsPage(movieId, true));
+  createLi.addEventListener('click', () => activeDetailsPage(movieId, true));
 
-  return libraryFilmList;
+  return createLi;
 }
 
 function drawQueueFilmList() {

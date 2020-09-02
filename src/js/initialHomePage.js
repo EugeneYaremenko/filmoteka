@@ -37,8 +37,6 @@ async function createCardFunc(results) {
 
   refs.sectionFilm.addEventListener('click', event => {
     if (event.target.nodeName === 'A') {
-      // console.log('event.target.id ', event.target.id);
-
       global.movieId = event.target.id;
       global.movieId = Number(global.movieId);
       return activeDetailsPage(global.movieId, false);
@@ -61,7 +59,7 @@ async function fetchPopularMoviesList() {
     createCardFunc(results);
 
     global.renderFilms = results;
-    console.log('global.renderFilms: ', global.renderFilms);
+    // console.log('global.renderFilms: ', global.renderFilms);
 
     if (global.pageNumber <= 1) {
       refs.prevButton.classList.add('visually-hidden');
@@ -82,8 +80,8 @@ function fetchGenres() {
     .then(response => response.json())
     .then(data => {
       global.genres = data.genres;
-
       return global.genres;
+
     })
     .catch(error => {
       refs.error.classList.remove('visually-hidden');

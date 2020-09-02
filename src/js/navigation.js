@@ -81,14 +81,11 @@ function activeDetailsPage(movieId, itsLibraryFilm) {
   // console.log(rendFilm);
   // return rendFilm;
   // }
-
   if (itsLibraryFilm) {
-  let queueFilmListlocalStorage = [
+    let queueFilmListlocalStorage = [
       ...JSON.parse(localStorage.getItem('filmsQueue')),
       ...JSON.parse(localStorage.getItem('filmsWatched')),
     ];
-
-    // console.log('movieId navigation: ', global.movieId);
 
     global.selectFilm = queueFilmListlocalStorage.find(el => el.id === global.movieId);
   }
@@ -96,7 +93,14 @@ function activeDetailsPage(movieId, itsLibraryFilm) {
   // console.log('movie.id navigation: ', movie.id);
   global.selectFilm = global.renderFilms.find(el => el.id === global.movieId); // Участник 1
  
-  // console.log('selectFilm navigation: ', global.selectFilm);
+    global.selectFilm = queueFilmListlocalStorage.find(el => el.id === movieId);
+  } else {
+    global.selectFilm = global.renderFilms.find(el => el.id === global.movieId);
+  }
+  // console.log('movieId navigation: ', global.movieId);
+  // console.log('movie.id navigation: ', movie.id);
+  // console.log('global.renderFilms navigation: ', global.renderFilms);
+  // Участник 1
 
   showDetails(global.selectFilm);
   refs.addQueueButton.addEventListener('click', toggleToQueue); // Участник 4
