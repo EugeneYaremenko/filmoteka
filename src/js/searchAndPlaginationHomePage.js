@@ -45,13 +45,9 @@ function fetchFilms(inputValue) {
       // global.renderFilms = data;
       // console.log('global.renderFilms: ', global.renderFilms);
       // console.log('data.results: ', data.results);
-      
-      
+
       global.renderFilms = data.results;
       // console.log('data.results: ', data.results);
-
-
-
 
       // console.log(global.renderFilms.total_pages);
       if (global.renderFilms.total_results === 0) {
@@ -67,7 +63,6 @@ function fetchFilms(inputValue) {
       } else {
         refs.prevButton.classList.remove('visually-hidden');
       }
-
       return global.renderFilms;
     })
     .catch(error => {
@@ -85,19 +80,24 @@ export function plaginationNavigation(e) {
   event.preventDefault();
 
   if (event.target.nodeName == 'BUTTON') {
-    if (event.target.name == 'Prev') {
-      global.pageNumber -= 1 && global.pageNumber !== 1;
-    } else if (event.target.name == 'Next') {
-      global.pageNumber +=
-        1 && global.pageNumber !== global.renderFilms.total_pages;
+    if (event.target.name == 'Prev' && global.pageNumber !== 1) {
+      global.pageNumber -= 1;
+    } else if (
+      event.target.name == 'Next' &&
+      global.pageNumber !== global.renderFilms.total_pages
+    ) {
+      // console.log('global.pageNumber before+: ', global.pageNumber);
+      global.pageNumber += 1;
+      // console.log('global.pageNumber after+: ', global.pageNumber);
+      // return;
     }
-
+    refs.pageNum.textContent = global.pageNumber;
+    // console.log('refs.pageNum.textContent: ', refs.pageNum.textContent);
+    // console.log('global.inputValue: ', global.inputValue);
     if (global.inputValue == '') {
       fetchPopularMoviesList(global.inputValue);
     } else {
       fetchFilms(global.inputValue);
     }
-    refs.pageNum.textContent = global.pageNumber;
-    console.log(refs.pageNum.textContent);
   }
 }

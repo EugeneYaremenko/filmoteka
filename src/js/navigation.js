@@ -73,39 +73,27 @@ function activeDetailsPage(movieId, itsLibraryFilm) {
   refs.sectionHomePage.classList.add('visually-hidden');
   refs.sectionLibraryPage.classList.add('visually-hidden');
 
-  // console.log(renderFilms);
-  // console.log(renderFilms.id);
-  // const rendFilm = rendFilm.find(function (el) {
-  //   console.log(el.id);
-  //   console.log(movieId);
-  //   return el.id === movieId;
-  // });
-  // console.log(rendFilm);
-  // return rendFilm;
-  // }
-
   // console.log('movieId navigation: ', global.movieId);
   // console.log('global.queueFilmList Navigation 11111: ', global.queueFilmList);
 
-
   if (itsLibraryFilm) {
-  let queueFilmListlocalStorage = [
+    let queueFilmListlocalStorage = [
       ...JSON.parse(localStorage.getItem('filmsQueue')),
       ...JSON.parse(localStorage.getItem('filmsWatched')),
     ];
-
-    console.log('movieId navigation: ', global.movieId);
-    console.log('global.queueFilmList Navigation 22222: ', global.queueFilmList);
-
-    global.selectFilm = queueFilmListlocalStorage.find(el => el.id === global.movieId);
+    // console.log('movieId navigation: ', global.movieId);
+    // console.log('global.queueFilmList Navigation 22222: ', global.queueFilmList);
+    global.selectFilm = queueFilmListlocalStorage.find(el => el.id === movieId);
+  } else {
+    global.selectFilm = global.renderFilms.find(el => el.id === global.movieId);
   }
   // console.log('movieId navigation: ', global.movieId);
   // console.log('movie.id navigation: ', movie.id);
   // console.log('global.renderFilms navigation: ', global.renderFilms);
-  global.selectFilm = global.renderFilms.find(el => el.id === global.movieId); // Участник 1
- 
-  console.log('selectFilm navigation: ', global.selectFilm);
-  console.log('global.queueFilmList Navigation 333333: ', global.queueFilmList);
+  // Участник 1
+
+  // console.log('selectFilm navigation: ', global.selectFilm);
+  // console.log('global.queueFilmList Navigation 333333: ', global.queueFilmList);
 
   showDetails(global.selectFilm);
   refs.addQueueButton.addEventListener('click', toggleToQueue); // Участник 4
@@ -118,5 +106,4 @@ refs.buttonLibraryWatched.removeEventListener('click', drawWatchedFilmList);
 refs.prevButton.removeEventListener('click', plaginationNavigation); // Участник 2
 refs.nextButton.removeEventListener('click', plaginationNavigation);
 
-// export { activeDetailsPage, selectFilm };
 export { activeDetailsPage };
