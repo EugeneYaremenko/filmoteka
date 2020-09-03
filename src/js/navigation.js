@@ -71,35 +71,19 @@ function activeDetailsPage(movieId, itsLibraryFilm) {
   refs.sectionHomePage.classList.add('visually-hidden');
   refs.sectionLibraryPage.classList.add('visually-hidden');
 
-  // console.log(renderFilms);
-  // console.log(renderFilms.id);
-  // const rendFilm = rendFilm.find(function (el) {
-  //   console.log(el.id);
-  //   console.log(movieId);
-  //   return el.id === movieId;
-  // });
-  // console.log(rendFilm);
-  // return rendFilm;
-  // }
   if (itsLibraryFilm) {
     let queueFilmListlocalStorage = [
       ...JSON.parse(localStorage.getItem('filmsQueue')),
       ...JSON.parse(localStorage.getItem('filmsWatched')),
     ];
-
-    global.selectFilm = queueFilmListlocalStorage.find(
-      el => el.id === global.movieId,
+    global.selectFilm = queueFilmListlocalStorage.find(el => el.id === movieId);
+    console.log(
+      'global.selectFilm activeDetailsPage in Library',
+      global.selectFilm,
     );
   }
-  // console.log('movieId navigation: ', global.movieId);
-  // console.log('movie.id navigation: ', movie.id);
-  global.selectFilm = global.renderFilms.find(el => el.id === global.movieId); // Участник 1
 
-  // console.log('movieId navigation: ', global.movieId);
-  // console.log('movie.id navigation: ', movie.id);
-  // console.log('global.renderFilms navigation: ', global.renderFilms);
-  // Участник 1
-
+  global.selectFilm = global.renderFilms.find(el => el.id === movieId); // Участник 1
   showDetails(global.selectFilm);
   refs.addQueueButton.addEventListener('click', toggleToQueue); // Участник 4
   refs.addWatchedButton.addEventListener('click', toggleToWatched);

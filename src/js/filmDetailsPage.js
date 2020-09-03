@@ -99,7 +99,6 @@ async function showDetails(selectFilm) {
   global.genres.filter(function (el) {
     return global.selectFilm.genre_ids.find(function (item) {
       if (item === el.id) {
-        console.log(11111, 'el.name:', el.name);
         el.name = el.name.toLowerCase();
         allString += ' '.concat(el.name, ',');
         genresString = allString.slice(0, -1);
