@@ -2,17 +2,16 @@
 @import 'helpers/extras';
 @import 'helpers/mixins';
 @import 'helpers/placeholders';
-// @import './helpers/typography';
 @import 'helpers/variables';
 @import 'reset.scss';
 @import 'base.scss';
 
 // components
 @import 'components/container';
+@import 'components/button';
 @import 'components/header';
 @import 'components/form';
 @import 'components/footer';
 @import 'components/details-page';
 @import 'components/home-page';
 @import 'components/library-page';
-// @import './components/spinner';

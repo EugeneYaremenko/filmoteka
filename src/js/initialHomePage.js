@@ -1,11 +1,13 @@
 'use strict';
 
 import cardTemplate from '../templates/cardFilm.hbs';
-import cardTemplateFilm from '../templates/cardTemplateFilm.hbs';
-import genresFilm from '../templates/genresFilm.hbs';
+// import cardTemplateFilm from '../templates/cardTemplateFilm.hbs';
 import { activeDetailsPage } from './navigation';
 import global from './constants';
-import { plaginationNavigation } from './searchAndPlaginationHomePage';
+import {
+  plaginationNavigation,
+  clearFilmList,
+} from './searchAndPlaginationHomePage';
 
 const refs = {
   searchForm: document.querySelector('#js-form'),
@@ -29,7 +31,6 @@ const genresUrl = 'https://api.themoviedb.org/3/genre/movie/list';
 
 const key = '0e322ad2a3bf93179a3983749fdc0c73';
 const languageEn = 'en-US';
-// const languageUa = 'ua';
 
 async function createCardFunc(results) {
   const markupCard = await cardTemplate(results);
@@ -81,7 +82,6 @@ function fetchGenres() {
     .then(data => {
       global.genres = data.genres;
       return global.genres;
-
     })
     .catch(error => {
       refs.error.classList.remove('visually-hidden');
@@ -92,8 +92,8 @@ function fetchGenres() {
 fetchPopularMoviesList();
 fetchGenres();
 
-function clearFilmList() {
-  refs.sectionFilm.innerHTML = '';
-}
+// function clearFilmList() {
+//   refs.sectionFilm.innerHTML = '';
+// }
 
 export { createCardFunc, fetchPopularMoviesList, fetchGenres };

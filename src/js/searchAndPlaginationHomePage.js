@@ -101,3 +101,5 @@ export function plaginationNavigation(e) {
     }
   }
 }
+
+export { clearFilmList };
