@@ -66,6 +66,10 @@ function activeLibraryPage() {
   refs.nextButton.removeEventListener('click', plaginationNavigation);
 }
 
+/* refs.sectionHomePage.addEventListener('click', activeHomePage);
+refs.sectionLibraryPage.addEventListener('click', activeLibraryPage); // !!!!!!!!!!!!!!!!!!
+refs.logo.addEventListener('click', activeHomePage); */
+
 function activeDetailsPage(movieId, itsLibraryFilm) {
   refs.sectionDetailsPage.classList.remove('visually-hidden');
   refs.sectionHomePage.classList.add('visually-hidden');
@@ -88,6 +92,8 @@ function activeDetailsPage(movieId, itsLibraryFilm) {
   refs.addQueueButton.addEventListener('click', toggleToQueue); // Участник 4
   refs.addWatchedButton.addEventListener('click', toggleToWatched);
 }
+
+
 
 refs.buttonLibraryQueue.removeEventListener('click', drawQueueFilmList); // Участник 5
 refs.buttonLibraryWatched.removeEventListener('click', drawWatchedFilmList);
