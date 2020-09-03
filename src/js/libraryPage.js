@@ -1,4 +1,4 @@
-import cardLibraryFilm from '../templates/cardLibraryFilm.hbs';
+import { activeDetailsPage } from './navigation';
 
 let buttonLibraryQueue = document.querySelector(
   '#js-navigation-library-btn-queue',
