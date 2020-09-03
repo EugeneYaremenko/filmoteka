@@ -1,85 +1,85 @@
-.main__navigation-library,
-.main__add-button {
-  display: flex;
-  justify-content: center;
-}
-
-.main__navigation-library-btn,
-.main__add-button {
-  width: 150px;
-  box-shadow: 0px 10px 14px -7px #276873;
-  background: linear-gradient(to bottom, #77c1bb 5%, #408c99 100%);
-  background-color: #77c1bb;
-  border-radius: 8px;
-  display: inline-block;
-  cursor: pointer;
-  color: #ffffff;
-  font-family: Arial;
-  font-size: 15px;
-  font-weight: bold;
-  padding: 10px 20px;
-  text-decoration: none;
-  text-shadow: 0px 1px 0px #3d768a;
-  margin: 20px;
-
-  &-active {
-    position: relative;
-    top: 1px;
+.main {
+  &__navigation-library {
+    display: flex;
+    justify-content: center;
   }
-}
 
-.main__navigation-library-btn:hover {
-  background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
-  background-color: #408c99;
-}
-
-.main__library-film-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
-  &-item {
-    position: relative;
-    width: 49%;
-    list-style: none;
-    overflow: hidden;
-    margin-bottom: 10px;
-    border-radius: 10px;
+  .main__navigation-library-btn {
+    width: 150px;
+    box-shadow: 0px 10px 14px -7px #276873;
+    background: linear-gradient(to bottom, #77c1bb 5%, #408c99 100%);
+    background-color: #77c1bb;
+    border-radius: 8px;
+    display: inline-block;
     cursor: pointer;
-    text-shadow: 0 0 5px #ffffa0, 0 0 10px #ffff4d, 0 0 15px #ffff41,
-      0 0 20px #ffff2a, 0 0 25px #ffff2b, 0 0 30px #fefe00, 0 0 35px #f7f700;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #3d768a;
+    margin: 20px;
+
+    &-active {
+      position: relative;
+      top: 1px;
+    }
   }
 
-  &-title,
-  &-popularity {
-    position: absolute;
-    font-size: larger;
-    color: #fff;
+  .main__navigation-library-btn:hover {
+    background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+    background-color: #408c99;
+  }
+
+  &__library-film-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &-item {
+      position: relative;
+      width: 49%;
+      list-style: none;
+      overflow: hidden;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      text-shadow: 0 0 5px #ffffa0, 0 0 10px #ffff4d, 0 0 15px #ffff41,
+        0 0 20px #ffff2a, 0 0 25px #ffff2b, 0 0 30px #fefe00, 0 0 35px #f7f700;
+    }
+
+    &-title,
+    &-popularity {
+      position: absolute;
+      font-size: larger;
+      color: #fff;
+      text-align: center;
+    }
+
+    &-title {
+      bottom: 10%;
+
+      @include tablet {
+        left: 15px;
+        bottom: 15px;
+      }
+    }
+
+    &-popularity {
+      top: 90%;
+
+      @include tablet {
+        top: 15px;
+        right: 15px;
+      }
+    }
+  }
+
+  .empty {
+    height: 300px;
+    margin-top: 50px;
+    font-weight: bold;
     text-align: center;
   }
-
-  &-title {
-    bottom: 10%;
-
-    @include tablet {
-      left: 15px;
-      bottom: 15px;
-    }
-  }
-
-  &-popularity {
-    top: 90%;
-
-    @include tablet {
-      top: 15px;
-      right: 15px;
-    }
-  }
-}
-
-.empty {
-  height: 300px;
-  margin-top: 50px;
-  font-weight: bold;
-  text-align: center;
 }

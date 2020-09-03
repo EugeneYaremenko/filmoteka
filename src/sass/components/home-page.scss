@@ -23,7 +23,6 @@
     }
 
     @include desktop {
-      // margin-bottom: 16px;
       margin-bottom: 0px;
     }
   }
@@ -32,10 +31,6 @@
     position: relative;
     cursor: pointer;
     margin-bottom: 10px;
-
-    // &:last-child {
-    //   margin-bottom: 0px;
-    // }
 
     @include tablet {
       width: 346px;
@@ -182,15 +177,4 @@
       margin-right: 12px;
     }
   }
-
-  /*  &__next-button {
-  } */
-
-  /* &__library-page {
-    display: none;
-  }
-
-  &__details-page {
-    display: none;
-  } */
 }

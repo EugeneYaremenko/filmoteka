@@ -93,21 +93,6 @@ function toggleToWatched() {
 }
 
 async function showDetails(selectFilm) {
-  // console.log('selectFilm showDetails: ', global.selectFilm);
-  // refs.mainImg.setAttribute(
-  //   'src',
-  //   `https://image.tmdb.org/t/p/w500/${selectFilm.poster_path}`,
-  // );
-  // refs.descriptionTitle.textContent = selectFilm.title;
-  // refs.tableVote.textContent = `${selectFilm.vote_average} / ${selectFilm.vote_count}`;
-  // refs.tablePopularity.textContent = selectFilm.popularity;
-  // refs.tableOriginalTitle.textContent = selectFilm.original_title;
-  // refs.tableGenre.textContent = selectFilm.genre_ids;
-  // refs.descriptionAboutInfo.textContent = selectFilm.overview;
-  // console.log('genresString:', genresString, genresString.length);
-
-  // console.log('refs.tableGenre:', refs.tableGenre);
-
   let allString = '';
   let genresString = '';
 
@@ -121,20 +106,14 @@ async function showDetails(selectFilm) {
       }
     });
   });
-  // console.log('genresString:', genresString, genresString.length);
-  // console.log('refs.tableGenre:', refs.tableGenre);
-  // console.log('refs.detailsPage:', refs.detailsPage);
 
   const markupFilm = await cardTemplateFilm(selectFilm);
   refs.detailsPage.innerHTML = '';
   refs.detailsPage.insertAdjacentHTML('afterbegin', markupFilm);
 
   const tableGenreRef = document.querySelector('#js-table-genre');
-  console.log('refs.tableGenreRef:', tableGenreRef);
 
   tableGenreRef.textContent = `${genresString}`;
-  //the same = tableGenreRef.insertAdjacentHTML('beforeend', `${genresString}`);
-  //the same = tableGenreRef.innerHTML(`${genresString}`).trim();
 
   monitorButtonStatusText();
 }
