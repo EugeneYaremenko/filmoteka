@@ -35,7 +35,6 @@ const languageEn = 'en-US';
 async function createCardFunc(results) {
   const markupCard = await cardTemplate(results);
   refs.sectionFilm.insertAdjacentHTML('beforeend', markupCard);
-
   refs.sectionFilm.addEventListener('click', event => {
     if (event.target.nodeName === 'A') {
       global.movieId = event.target.id;
@@ -48,26 +47,20 @@ async function createCardFunc(results) {
 
 async function fetchPopularMoviesList() {
   const requestParams = `?api_key=${key}&language=${languageEn}&page=${global.pageNumber}`;
-
   try {
     let response = await fetch(popularUrl + requestParams);
     let data = await response.json();
     let results = await data.results;
-    // console.log('results initial: ', results);
     if (results.length > 1) {
       clearFilmList();
     }
     createCardFunc(results);
-
     global.renderFilms = results;
-    // console.log('global.renderFilms: ', global.renderFilms);
-
     if (global.pageNumber <= 1) {
       refs.prevButton.classList.add('visually-hidden');
     } else {
       refs.prevButton.classList.remove('visually-hidden');
     }
-
     return global.renderFilms;
   } catch (error) {
     refs.error.classList.remove('visually-hidden');
@@ -91,9 +84,5 @@ function fetchGenres() {
 
 fetchPopularMoviesList();
 fetchGenres();
-
-// function clearFilmList() {
-//   refs.sectionFilm.innerHTML = '';
-// }
 
 export { createCardFunc, fetchPopularMoviesList, fetchGenres };
