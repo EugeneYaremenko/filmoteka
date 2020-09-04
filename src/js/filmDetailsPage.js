@@ -1,5 +1,3 @@
-// Участник №04
-
 import global from './constants';
 import cardTemplateFilm from '../templates/cardTemplateFilm.hbs';
 
@@ -87,6 +85,7 @@ function toggleToWatched() {
 async function showDetails(selectFilm) {
   let allString = '';
   let genresString = '';
+  let yearFilmCard = '';
 
   global.genres.filter(function (el) {
     return global.selectFilm.genre_ids.find(function (item) {
@@ -101,10 +100,17 @@ async function showDetails(selectFilm) {
   const markupFilm = await cardTemplateFilm(selectFilm);
   refs.detailsPage.innerHTML = '';
   refs.detailsPage.insertAdjacentHTML('afterbegin', markupFilm);
-
   const tableGenreRef = document.querySelector('#js-table-genre');
+  const yearRef = document.querySelector('#js-descriptionTitle-year');
+
+  function yearFilm(el) {
+    yearFilmCard = el.release_date.slice(0, 4);
+  }
+
+  yearFilm(selectFilm);
 
   tableGenreRef.textContent = `${genresString}`;
+  yearRef.textContent = `(${yearFilmCard})`;
 
   monitorButtonStatusText();
 }

@@ -16,10 +16,12 @@ function createLibraryCardFunc(imgPath, filmTitle, movieId, voteAverage) {
         <img alt="${filmTitle}" src="https://image.tmdb.org/t/p/w500/${imgPath}" class="main__film-image js-film-image">
       </a>
     </div>
-    <span class="main__library-film-list-title">${filmTitle}</span>
-    <span class="main__library-film-list-popularity">Popularity: ${voteAverage}</span>`;
+  <span class="main__library-film-list--title">${filmTitle}</span>
+  <span class="main__library-film-list--popularity">${voteAverage}</span>`;
+
   createLi.insertAdjacentHTML('beforeend', createLiMarkup);
   createLi.addEventListener('click', () => activeDetailsPage(movieId, true));
+
   return createLi;
 }
 

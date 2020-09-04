@@ -16,8 +16,6 @@ const refs = {
 
 refs.searchForm.addEventListener('submit', searchFilms);
 refs.paginationBlock.addEventListener('click', plaginationNavigation);
-// refs.prevButton.addEventListener('click', plaginationNavigation);
-// refs.nextButton.addEventListener('click', plaginationNavigation);
 
 function searchFilms(e) {
   e.preventDefault();

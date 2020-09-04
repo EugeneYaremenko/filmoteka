@@ -1,7 +1,6 @@
 'use strict';
 
 import cardTemplate from '../templates/cardFilm.hbs';
-// import cardTemplateFilm from '../templates/cardTemplateFilm.hbs';
 import { activeDetailsPage } from './navigation';
 import global from './constants';
 import {
@@ -18,7 +17,6 @@ const refs = {
   prevButton: document.querySelector('#js-prev-button'),
   nextButton: document.querySelector('#js-next-button'),
   paginationBlock: document.querySelector('#js-pagination-wrapper'),
-
   sectionHomePage: document.querySelector('#js-home-page'),
   sectionLibraryPage: document.querySelector('#js-library-page'),
   sectionDetailsPage: document.querySelector('#js-details-page'),
@@ -35,6 +33,23 @@ const languageEn = 'en-US';
 async function createCardFunc(results) {
   const markupCard = await cardTemplate(results);
   refs.sectionFilm.insertAdjacentHTML('beforeend', markupCard);
+
+  function cropeReleaseDate() {
+    const yearFilmRef = document.querySelectorAll('.main__film-title--year'),
+      size = 5,
+      endCharacter = ')';
+    yearFilmRef.forEach(el => {
+      let year = el.innerHTML;
+
+      if (el.innerHTML.length > size) {
+        year = year.substr(0, size);
+        el.innerHTML = year + endCharacter;
+      }
+    });
+  }
+
+  cropeReleaseDate();
+
   refs.sectionFilm.addEventListener('click', event => {
     if (event.target.nodeName === 'A') {
       global.movieId = event.target.id;

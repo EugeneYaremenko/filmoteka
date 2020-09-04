@@ -1,5 +1,4 @@
 import global from './constants';
-// import { renderFilms } from './initialHomePage';
 import { showDetails, toggleToQueue, toggleToWatched } from './filmDetailsPage';
 import { drawQueueFilmList, drawWatchedFilmList } from './libraryPage';
 import { plaginationNavigation } from './searchAndPlaginationHomePage';
@@ -34,8 +33,6 @@ function activeHomePage() {
   refs.sectionHomePage.classList.remove('visually-hidden');
   refs.sectionLibraryPage.classList.add('visually-hidden');
   refs.sectionDetailsPage.classList.add('visually-hidden');
-  // refs.prevButton.addEventListener('click', plaginationNavigation); // Участник 2
-  // refs.nextButton.addEventListener('click', plaginationNavigation);
   refs.addQueueButton.removeEventListener('click', toggleToQueue); // Участник 4
   refs.addWatchedButton.removeEventListener('click', toggleToWatched);
   refs.buttonLibraryQueue.removeEventListener('click', drawQueueFilmList); // Участник 5
