@@ -63,10 +63,6 @@ function activeDetailsPage(movieId, itsLibraryFilm) {
       ...JSON.parse(localStorage.getItem('filmsWatched')),
     ];
     global.selectFilm = queueFilmListlocalStorage.find(el => el.id === movieId);
-    console.log(
-      'global.selectFilm activeDetailsPage in Library',
-      global.selectFilm,
-    );
   }
   global.selectFilm = global.renderFilms.find(el => el.id === movieId); // Участник 1
   showDetails(global.selectFilm);
