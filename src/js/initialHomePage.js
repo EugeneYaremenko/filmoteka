@@ -1,7 +1,6 @@
 'use strict';
 
 import cardTemplate from '../templates/cardFilm.hbs';
-// import cardTemplateFilm from '../templates/cardTemplateFilm.hbs';
 import { activeDetailsPage } from './navigation';
 import global from './constants';
 import {
@@ -36,6 +35,22 @@ async function createCardFunc(results) {
   const markupCard = await cardTemplate(results);
   refs.sectionFilm.insertAdjacentHTML('beforeend', markupCard);
 
+  function cropeReleaseDate() {
+    const yearFilmRef = document.querySelectorAll('.main__film-title--year'),
+      size = 5,
+      endCharacter = ')';
+    yearFilmRef.forEach(el => {
+      let year = el.innerHTML;
+
+      if (el.innerHTML.length > size) {
+        year = year.substr(0, size);
+        el.innerHTML = year + endCharacter;
+      }
+    });
+  }
+
+  cropeReleaseDate();
+
   refs.sectionFilm.addEventListener('click', event => {
     if (event.target.nodeName === 'A') {
       global.movieId = event.target.id;
@@ -53,14 +68,13 @@ async function fetchPopularMoviesList() {
     let response = await fetch(popularUrl + requestParams);
     let data = await response.json();
     let results = await data.results;
-    // console.log('results initial: ', results);
+
     if (results.length > 1) {
       clearFilmList();
     }
     createCardFunc(results);
 
     global.renderFilms = results;
-    // console.log('global.renderFilms: ', global.renderFilms);
 
     if (global.pageNumber <= 1) {
       refs.prevButton.classList.add('visually-hidden');
@@ -91,9 +105,5 @@ function fetchGenres() {
 
 fetchPopularMoviesList();
 fetchGenres();
-
-// function clearFilmList() {
-//   refs.sectionFilm.innerHTML = '';
-// }
 
 export { createCardFunc, fetchPopularMoviesList, fetchGenres };

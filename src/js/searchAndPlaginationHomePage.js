@@ -71,11 +71,6 @@ function fetchFilms(inputValue) {
     });
 }
 
-// async function insertListItems(images) {
-//   const markupGallery = await cardTemplate(images);
-//   refs.filmList.insertAdjacentHTML('beforeend', markupGallery);
-// }
-
 export function plaginationNavigation(e) {
   event.preventDefault();
 

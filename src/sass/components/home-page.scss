@@ -101,15 +101,27 @@
     }
   }
 
-  &__film-title {
+  &__film-title-wrapper {
     position: absolute;
     left: 10px;
     bottom: 8px;
+    display: flex;
+    // z-index: 10;
+    flex-direction: row;
+
+  }
+
+  &__film-title {
     font-size: 12.3px;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     line-height: 1.2;
     color: rgb(255, 255, 255);
+    margin-right: 4px;
+
+    &--year{
+      margin-right: 0px;
+    }
 
     @include tablet {
       bottom: 14px;
