@@ -17,7 +17,6 @@ const refs = {
   prevButton: document.querySelector('#js-prev-button'),
   nextButton: document.querySelector('#js-next-button'),
   paginationBlock: document.querySelector('#js-pagination-wrapper'),
-
   sectionHomePage: document.querySelector('#js-home-page'),
   sectionLibraryPage: document.querySelector('#js-library-page'),
   sectionDetailsPage: document.querySelector('#js-details-page'),
@@ -63,25 +62,20 @@ async function createCardFunc(results) {
 
 async function fetchPopularMoviesList() {
   const requestParams = `?api_key=${key}&language=${languageEn}&page=${global.pageNumber}`;
-
   try {
     let response = await fetch(popularUrl + requestParams);
     let data = await response.json();
     let results = await data.results;
-
     if (results.length > 1) {
       clearFilmList();
     }
     createCardFunc(results);
-
     global.renderFilms = results;
-
     if (global.pageNumber <= 1) {
       refs.prevButton.classList.add('visually-hidden');
     } else {
       refs.prevButton.classList.remove('visually-hidden');
     }
-
     return global.renderFilms;
   } catch (error) {
     refs.error.classList.remove('visually-hidden');

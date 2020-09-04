@@ -1,18 +1,8 @@
-// Участник №04
-
 import global from './constants';
 import cardTemplateFilm from '../templates/cardTemplateFilm.hbs';
 
 const refs = {
   detailsPage: document.querySelector('#js-details-page-wrapper'),
-
-  // mainImg: document.querySelector('#js-mainImg'),
-  // descriptionTitle: document.querySelector('#js-descriptionTitle'),
-  // tableVote: document.querySelector('.js-tableVote'),
-  // tablePopularity: document.querySelector('.js-tablePopularity'),
-  // tableOriginalTitle: document.querySelector('.js-tableOriginalTitle'),
-  // tableGenre: document.querySelector('#js-table-genre'),
-  // descriptionAboutInfo: document.querySelector('#js-descriptionAboutInfo'),
   addQueueButton: document.querySelector('#js-addQueueButton'),
   addWatchedButton: document.querySelector('#js-addWatchedButton'),
 };
@@ -110,7 +100,6 @@ async function showDetails(selectFilm) {
   const markupFilm = await cardTemplateFilm(selectFilm);
   refs.detailsPage.innerHTML = '';
   refs.detailsPage.insertAdjacentHTML('afterbegin', markupFilm);
-
   const tableGenreRef = document.querySelector('#js-table-genre');
   const yearRef = document.querySelector('#js-descriptionTitle-year');
 
