@@ -1,0 +1,192 @@
+.main {
+  &__section-film {
+    padding-top: 14px;
+
+    @include tablet {
+      padding-top: 30px;
+    }
+  }
+
+  &__film-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @extend %list;
+    margin-bottom: 18px;
+
+    @include tablet {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+
+    @include desktop {
+      margin-bottom: 0px;
+    }
+  }
+
+  &__film-item {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    @include tablet {
+      width: 346px;
+      height: 180px;
+      margin-bottom: 16px;
+      margin-right: 24px;
+
+      &:nth-child(2n) {
+        margin-right: 0px;
+      }
+    }
+
+    @include desktop {
+      width: 466px;
+      height: 244px;
+      margin-bottom: 20px;
+
+      &:nth-child(2n + 1) {
+        margin-right: 32px;
+      }
+
+      &:not(:nth-last-child(-n + 2)) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  &__film-item-wrapper {
+    border-radius: 10px;
+    background-color: rgb(179, 179, 179);
+  }
+
+  &__film-link {
+    @extend %link;
+
+    &::before {
+      @include pseudo($display: block);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      border-radius: 10px;
+      background: transparent;
+      background: linear-gradient(
+        180deg,
+        hsla(0, 0%, 100%, 0),
+        hsla(0, 0%, 18%, 0.5) 50%,
+        hsla(0, 0%, 4%, 0.95)
+      );
+    }
+  }
+
+  &__film-image {
+    width: 298px;
+    height: 156px;
+    border-radius: 10px;
+    overflow: hidden;
+
+    @include tablet {
+      width: 346px;
+      height: 180px;
+    }
+
+    @include desktop {
+      width: 466px;
+      height: 244px;
+    }
+  }
+
+  &__film-title-wrapper {
+    position: absolute;
+    left: 10px;
+    bottom: 8px;
+    display: flex;
+    // z-index: 10;
+    flex-direction: row;
+
+  }
+
+  &__film-title {
+    font-size: 12.3px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    line-height: 1.2;
+    color: rgb(255, 255, 255);
+    margin-right: 4px;
+
+    &--year{
+      margin-right: 0px;
+    }
+
+    @include tablet {
+      bottom: 14px;
+      font-size: 14.5px;
+    }
+
+    @include desktop {
+      font-size: 20px;
+    }
+  }
+
+  &__pagination-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 22px;
+    padding: 0px 24px;
+
+    @include tablet {
+      margin-bottom: 18px;
+    }
+
+    @include desktop {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__prev-button,
+  &__page-number,
+  &__next-button {
+    font-size: 22.2px;
+    font-family: 'DroidSans', sans-serif;
+    font-weight: 700;
+    color: #556270;
+    font-weight: bold;
+    line-height: 1.143;
+    text-align: left;
+    text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.004);
+    padding: 10px 20px;
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e2e2e2;
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 1px 0px rgba(255, 255, 255, 0.004);
+
+    @include tablet {
+      font-size: 17.5px;
+      line-height: 20px;
+    }
+  }
+
+  &__prev-button {
+    margin-right: 16px;
+
+    @include tablet {
+      margin-right: 12px;
+    }
+  }
+
+  &__page-number {
+    margin-right: 16px;
+
+    @include tablet {
+      margin-right: 12px;
+    }
+  }
+}

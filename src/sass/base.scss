@@ -1,0 +1,63 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // min-height: 100vh;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+// Mixins for Media Queries
+// Small devices
+// @mixin mobile {
+//   @media (min-width: #{$screen-mob}) {
+//     @content;
+//   }
+// }
+
+// // Medium devices
+// @mixin tablet {
+//   @media (min-width: #{$screen-tabl}) {
+//     @content;
+//   }
+// }
+
+// // Large devices
+// @mixin desktop {
+//   @media (min-width: #{$screen-desk}) {
+//     @content;
+//   }
+// }
+
+// screen size
+// $screen-format: screen;
+// $screen-mobile: 320px;
+// $screen-tablet: 768px;
+// $screen-desktop: 1024px;
+// $screen-desktop: 1280px;
+// $screen-desktop-wide: 1680px;
+
+
+// breakpoints
+// small tablets and large smartphones (landscape view)
+// $screen-mob: 360px;
+// // small tablets
+// $screen-tabl: 808px;
+// // tablets and small desktops
+// $screen-desk: 1064px;
+
+
+// @include tablet {
+//   // &--button {
+//   //   display: block;
+//   // }
+// }
+
+// @include desktop {
+//   // display: block;
+// }

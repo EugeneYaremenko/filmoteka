@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Filmoteka</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="header__content container">
+        <div id="js-logo" class="header__logo-wrapper">
+          <a href="#" class="header__link">
+            <img src="./images/logo.png" alt="logo" class="header__logo" />
+            <p class="header__logo-title">Filmoteka</p>
+          </a>
+        </div>
+        <nav class="header__nav nav">
+          <ul class="nav__list">
+            <li id="js-navHomeLink" class="nav__item">
+              <a href="#" class="nav__link">Home</a>
+            </li>
+            <li id="js-navMyLibraryLink" class="nav__item">
+              <a href="#" class="nav__link">My library</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="main__container container">
+        <h1 class="visually-hidden">Filmoteka</h1>
+
+        <section id="js-home-page" class="main__home-page">
+          <form id="js-form" action="" class="main__form">
+            <input
+              id="js-input"
+              class="main__input"
+              name="query"
+              type="text"
+              placeholder="Write a movie name and click Enter"
+              autocomplete="off"
+            />
+          </form>
+          <p id="js-error" class="main__error visually-hidden">
+            Search result not successful. Enter the correct movie name and try
+            again.
+          </p>
+
+          <section class="main__section-film">
+            <ul id="js-film-list" class="main__film-list"></ul>
+            <ul id="js-film-card" class="main__film-card"></ul>
+            <div id="js-pagination-wrapper" class="main__pagination-wrapper">
+              <button
+                id="js-prev-button"
+                class="main__prev-button visually-hidden"
+                name="Prev"
+              >
+                Prev
+              </button>
+              <div id="js-page-number" class="main__page-number">1</div>
+              <button id="js-next-button" class="main__next-button" name="Next">
+                Next
+              </button>
+            </div>
+          </section>
+        </section>
+
+        <section id="js-library-page" class="main__library-page">
+          <div class="main__navigation-library">
+            <button
+              id="js-navigation-library-btn-queue"
+              class="main__navigation-library-btn main__navigation-library-btn-active"
+            >
+              Queue
+            </button>
+            <button
+              id="js-navigation-library-btn-watched"
+              class="main__navigation-library-btn"
+            >
+              Watched
+            </button>
+          </div>
+          <ul id="js-library-film-list" class="main__film-list"></ul>
+        </section>
+        <section
+          id="js-details-page"
+          class="main__details-page visually-hidden"
+        >
+          <div
+            id="js-details-page-wrapper"
+            class="main__details-page-wrapper"
+          ></div>
+          <!-- visually-hidden -->
+          <div class="main__add-button-wrapper">
+            <button id="js-addQueueButton" class="main__add-button">
+              Add to queue
+            </button>
+            <button id="js-addWatchedButton" class="main__add-button">
+              Add to watched
+            </button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__wrapper container">
+        <h3 class="footer__title">Made by FECAOff#2_Vn.</h3>
+        <button id="footer__button" class="footer__button is-hidden">
+          <!-- &#11014; -->
+        </button>
+      </div>
+    </footer>
+  </body>
+</html>

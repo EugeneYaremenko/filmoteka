@@ -1,0 +1,64 @@
+// font-family and weight
+.typographic-meb {
+  font-family: $font-family-monts;
+  font-weight: $font-weight-extrabold;
+}
+
+.typographic-mb {
+  font-family: $font-family-monts;
+  font-weight: $font-weight-bold;
+}
+
+.typographic-msb {
+  font-family: $font-family-monts;
+  font-weight: $font-weight-semibold;
+}
+
+.typographic-mm {
+  font-family: $font-family-monts;
+  font-weight: $font-weight-medium;
+}
+
+.typographic-mr {
+  font-family: $font-family-monts;
+  font-weight: $font-weight-regular;
+}
+
+.typographic-tb {
+  font-family: $main-font-tahoma;
+  font-weight: $font-weight-bold;
+  text-align: center;
+}
+
+// text-color
+.text-white {
+  color: $first-white-color;// #ffffff;
+}
+
+.text-light {
+  color: $second-white-color;// #ffffff;
+}
+
+.text-orange {
+  color: $first-orange-color;// #ff6b08;
+}
+
+.text-lightgrey {
+  color: $first-lightgrey-color;// #b9b9b9;
+}
+
+.text-grey {
+  color: $first-grey-color;// #858585;
+}
+
+.text-lightdark {
+  color: $first-lightdark-color;// #111517;
+}
+
+.text-dark {
+  color: $first-dark-color;// #18191d;
+}
+
+.text-black {
+  color: $first-black-color;// #000000;
+}

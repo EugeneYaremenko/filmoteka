@@ -1,0 +1,26 @@
+// Mixins for Media Queries
+// Small devices
+@mixin mobile {
+  @media (min-width: #{$screen-mob}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin tablet {
+  @media (min-width: #{$screen-tabl}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin desktop {
+  @media (min-width: #{$screen-desk}) {
+    @content;
+  }
+}
+
+@mixin pseudo($display: inline-block, $content: '') {
+  display: $display;
+  content: $content;
+}
