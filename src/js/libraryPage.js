@@ -17,7 +17,6 @@ function createLibraryCardFunc(imgPath, filmTitle, movieId, voteAverage) {
       </a>
     </div>
   <span class="main__library-film-list--title">${filmTitle}</span>
-  <span class="main__library-film-list--year">${filmTitle}</span>
   <span class="main__library-film-list--popularity">${voteAverage}</span>`;
 
   createLi.insertAdjacentHTML('beforeend', createLiMarkup);

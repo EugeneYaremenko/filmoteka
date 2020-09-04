@@ -59,12 +59,21 @@
       line-height: 1.2;
       color: rgb(255, 255, 255);
       text-align: center;
+
+      @include tablet {
+        bottom: 14px;
+        font-size: 14.5px;
+      }
+
+      @include desktop {
+        font-size: 20px;
+      }
     }
 
     &--popularity {
       position: absolute;
-      right: 6px;
-      top: 6px;
+      right: 8px;
+      top: 8px;
       font-size: 12.54px;
       font-family: 'Roboto', sans-serif;
       font-weight: 500;
@@ -78,6 +87,23 @@
         inset 0px 0px 2.64px 1.36px rgba(0, 0, 0, 0.35);
       width: 32px;
       height: 17px;
+
+      @include tablet {
+        bottom: 14px;
+        font-size: 15.03px;
+        border-radius: 8px;
+        width: 38px;
+        height: 20px;
+      }
+
+      @include desktop {
+        right: 10px;
+        top: 10px;
+        font-size: 20px;
+        border-radius: 10px;
+        width: 49px;
+        height: 27px;
+      }
     }
 
     &-title {
